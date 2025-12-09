@@ -320,6 +320,7 @@ h2 {
 .main-nav {
     margin-left: 40px; 
     margin-right: auto; 
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .main-nav a {
@@ -372,7 +373,19 @@ h2 {
     font-weight: 700;
 }
 
-/* Removed: Theme Toggle Button Styling */
+/* NEW: Mobile Hamburger Menu Button */
+.menu-toggle {
+    display: none; /* Hide by default on desktop */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-primary);
+    padding: 10px;
+}
+.menu-toggle .fa-times {
+    display: none; /* Hide the close icon initially */
+}
 
 
 /* HERO SECTION WITH SLIDESHOW (UPDATED) */
@@ -667,7 +680,7 @@ h2 {
     border: 8px solid var(--color-primary);
     box-shadow: 0 10px 20px var(--color-shadow);
 }
-.founder-image-box p {
+.founder-image-box h3 {
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--color-primary);
@@ -1187,19 +1200,21 @@ h2 {
     /* MOBILE HEADER FIX: 992px */
     .main-nav {
         /* Hide main nav links on tablets/large phones for a cleaner top bar */
+        /* To be overridden by JS for mobile menu */
         display: none; 
     }
     .logo-text {
         font-size: 1.5rem; /* Slightly smaller text on tablets */
     }
-    /* Story Card Image Fix */
-    .story-card img {
-        width: 200px; 
-        height: 200px;
-    }
+
     /* Donor/Volunteer CTA blocks should center on mobile */
     .form-cta-block, .volunteer-cta-wrapper {
         max-width: 100%;
+    }
+
+    /* Show the hamburger button on screens up to 992px */
+    .menu-toggle {
+        display: block; 
     }
 }
 
@@ -1239,9 +1254,6 @@ h2 {
         margin-right: 0; 
     }
     
-    /* Removed: Theme Toggle Button Styling from mobile query */
-    /* #theme-toggle { ... } */
-
     .btn-donate {
         margin-top: 0;
         /* Reduce padding slightly for a tighter mobile fit */
@@ -1249,9 +1261,38 @@ h2 {
         font-size: 1rem;
     }
     
+    /* MOBILE NAVIGATION STYLES */
     .main-nav {
-        /* Explicitly hide on mobile for a clean top bar */
-        display: none;
+        /* Full width and stack underneath the header bar when open */
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0;
+        margin-right: 0;
+        background-color: var(--color-background-light-active);
+        padding: 10px 0;
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05);
+        
+        /* Initial state: Hidden off-screen/compact */
+        display: flex;
+        flex-direction: column;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .main-nav.is-open {
+        height: auto; /* Allow height to expand */
+        padding: 15px 0;
+    }
+    
+    .main-nav a {
+        margin: 8px 20px;
+        font-size: 1.1rem;
+        padding: 5px 0;
+        border-bottom: 1px solid var(--color-background-alt);
+    }
+    .main-nav a:last-child {
+        border-bottom: none;
     }
 
 
@@ -1296,11 +1337,6 @@ h2 {
     }
     .welcome-modal h3 {
         font-size: 1.5rem;
-    }
-    /* Story Card Image Fix */
-    .story-card img {
-        width: 150px; 
-        height: 150px;
     }
     
     /* MEDIA QUERY for Mobile Gallery */
@@ -1349,17 +1385,25 @@ h2 {
 }
         </style>
     </head>
-<body data-lang="en"> <header class="main-header" role="banner">
+<body data-lang="en">
+    <header class="main-header" role="banner">
         <div class="container nav-bar">
             <a href="#home" class="logo-img-wrapper" aria-label="Manav Seva Ashram Home">
                 <img src="Logo/logo.jpg" alt="Manav Seva Ashram (MSA) Swaroopganj Logo" class="logo-image" width="50" height="50">
                 <span class="logo-text">Manav Seva Ashram</span>
             </a>
             
-            <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+            <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+
+            <nav class="main-nav" id="main-nav-links" role="navigation" aria-label="Main Navigation">
                 <a href="#about" data-key="nav_about">About</a>
                 <a href="#impact" data-key="nav_impact">Impact</a>
-                <a href="#projects" data-key="nav_projects">Projects</a> <a href="#founder" data-key="nav_founder">Founder</a> <a href="#join" data-key="nav_join">Join Us</a>
+                <a href="#projects" data-key="nav_projects">Projects</a> 
+                <a href="#founder" data-key="nav_founder">Founder</a> 
+                <a href="#join" data-key="nav_join">Join Us</a>
                 <a href="#contact" data-key="nav_contact">Contact</a>
             </nav>
             
@@ -1485,11 +1529,12 @@ h2 {
                         <source src="MSA/Enjoy.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-               
+                </div>
             </div>
         </div>
     </section>
-<section id="projects" class="section-padding bg-alt-light animate-on-scroll" role="region" aria-labelledby="projects_title">
+
+    <section id="projects" class="section-padding bg-alt-light animate-on-scroll" role="region" aria-labelledby="projects_title">
         <div class="container">
             <h2 id="projects_title" class="section-title" data-key="projects_title">Our Current Projects & Construction Drives</h2>
             <p class="section-subtitle" data-key="projects_subtitle" style="text-align: center; margin-top: -20px; margin-bottom: 40px; color: var(--color-text-gray);">Building a bigger, safer, and better home for more abandoned elders.</p>
@@ -1553,7 +1598,8 @@ h2 {
 
         </div>
     </section>
-<section id="stats" class="section-padding cta-donate animate-on-scroll" role="region" aria-labelledby="stats_title" style="background-color: var(--color-background-alt);">
+
+    <section id="stats" class="section-padding cta-donate animate-on-scroll" role="region" aria-labelledby="stats_title" style="background-color: var(--color-background-alt);">
         <div class="container text-center">
             <h2 id="stats_title" class="cta-title" data-key="stats_title" style="color: var(--color-primary);">Our Mission in Numbers</h2>
             <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; margin-top: 40px;">
@@ -1562,7 +1608,7 @@ h2 {
                     <p data-key="stat1_label" style="font-size: 1.2rem;">Lives Currently in Care</p>
                 </div>
                 <div role="status" aria-live="polite" style="color: var(--color-text-dark);">
-                    <p class="stat-number" id="stat2" data-target="50" style="font-size: 3rem; font-weight: 700; color: var(--color-primary);">0</p>
+                    <p class="stat-number" id="stat2" data-target="150000" style="font-size: 3rem; font-weight: 700; color: var(--color-primary);">0</p>
                     <p data-key="stat2_label" style="font-size: 1.2rem;">Meals Served Annually</p>
                 </div>
                 <div role="status" aria-live="polite" style="color: var(--color-text-dark);">
@@ -1580,7 +1626,7 @@ h2 {
             <div class="founder-grid">
                 <div class="founder-image-box">
                     <img src="Logo/Jigar.jpg" alt="Photo of Jigar Rawal, Founder of Manav Seva Ashram, Swaroopganj" loading="lazy">
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);" data-key="founder_name"> Jigar Rawal, Founder, Manav Seva Ashram</h3>
+                    <h3 data-key="founder_name"> Jigar Rawal, Founder, Manav Seva Ashram</h3>
                     <p style="font-size: 1rem; color: var(--color-text-gray);">Managing Trustee</p>
                 </div>
 
@@ -1595,6 +1641,7 @@ h2 {
             </div>
         </div>
     </section>
+
     <section id="donate" class="section-padding cta-donate animate-on-scroll">
         <div class="container text-center">
             <h2 class="cta-title" data-key="cta_donate_title">Be the Anchor. Donate Today.</h2>
@@ -1664,7 +1711,7 @@ h2 {
                     <input type="checkbox" id="faq1" class="accordion-toggle" aria-controls="faq1-content">
                     <label for="faq1" class="accordion-header" role="button" aria-expanded="false" data-key="faq1_q">How can I admit someone to the ashram?</label>
                     <div class="accordion-content" id="faq1-content" role="region" aria-hidden="true">
-                        <p data-key="faq1_a">Please call our **Emergency/Admissions Helpline** at [+91 YYYYYYYYYY]. Our team will guide you through the initial screening and documentation process. Admission is strictly based on need and current availability.</p>
+                        <p data-key="faq1_a">Please call our **Emergency/Admissions Helpline** at [+91 9602863972]. Our team will guide you through the initial screening and documentation process. Admission is strictly based on need and current availability.</p>
                     </div>
                 </div>
                 <div class="faq-item" role="listitem">
@@ -1698,7 +1745,7 @@ h2 {
             <div class="map-placeholder">
                 <h3 data-key="contact_map_title" style="position: absolute; color: #333; padding: 15px; background: rgba(255,255,255,0.8); border-radius: 8px; z-index: 10;">Our Location</h3>
                 <iframe 
-                    src="https://maps.google.com/maps?q=JWQ8%2B833%2C%20Service%20Rd%2C%20Swaroopganj%2C%20Rajasthan%20307023&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1825.266205423871!2d72.9366666!3d24.4752778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395359b3f3e1b345%3A0x8a99b4d8d1e18d6a!2sManav%20Seva%20Ashram%20Swaroopganj!5e0!3m2!1sen!2sin!4v1703648000000!5m2!1sen!2sin"
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade"
@@ -1724,7 +1771,9 @@ h2 {
             <div class="footer-links">
                 <a href="#home" data-key="nav_home_footer">Home</a> | 
                 <a href="#about" data-key="nav_about_footer">About</a> | 
-                <a href="#projects" data-key="nav_projects_footer">Projects</a> | <a href="#founder" data-key="nav_founder_footer">Founder</a> | <a href="#donate" data-key="nav_donate_footer">Donate</a> | 
+                <a href="#projects" data-key="nav_projects_footer">Projects</a> | 
+                <a href="#founder" data-key="nav_founder_footer">Founder</a> | 
+                <a href="#donate" data-key="nav_donate_footer">Donate</a> | 
                 <a href="#join" data-key="nav_volunteer_footer">Volunteer</a>
             </div>
             <div class="social-icons" aria-label="Social Media Links">
@@ -1761,6 +1810,7 @@ h2 {
             <i class="fas fa-phone-alt"></i>
         </a>
     </div>
+
     <div id="welcome-modal-backdrop" class="modal-backdrop">
         <div class="welcome-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
             <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">
@@ -1783,6 +1833,7 @@ h2 {
             </div>
         </div>
     </div>
+    
     <script defer> 
         // --- Global Variables ---
         let slideIndex = 0;
@@ -1927,7 +1978,8 @@ h2 {
                 // FAQ Section
                 faq_title: 'सामान्य प्रश्न (FAQ)',
                 faq1_q: 'मैं आश्रम में किसी को कैसे भर्ती करा सकता हूँ?',
-                faq1_a: 'कृपया हमारे <strong>आपातकालीन/प्रवेश हेल्पलाइन</strong> पर [+91 YYYYYYYYYY] कॉल करें। हमारी टीम आपको प्रारंभिक स्क्रीनिंग और दस्तावेज़ीकरण प्रक्रिया के माध्यम से मार्गदर्शन करेगी। प्रवेश सख्ती से आवश्यकता और वर्तमान उपलब्धता पर आधारित है।',
+                // FIX: Updated the Hindi FAQ admission number
+                faq1_a: 'कृपया हमारे <strong>आपातकालीन/प्रवेश हेल्पलाइन</strong> पर [+91 9602863972] कॉल करें। हमारी टीम आपको प्रारंभिक स्क्रीनिंग और दस्तावेज़ीकरण प्रक्रिया के माध्यम से मार्गदर्शन करेगी। प्रवेश सख्ती से आवश्यकता और वर्तमान उपलब्धता पर आधारित है।',
                 faq2_q: 'क्या आश्रम देखभाल के लिए कोई शुल्क लेता है?',
                 faq2_a: 'नहीं। भोजन, आश्रय, चिकित्सा देखभाल और कपड़े सहित सभी सेवाएँ हर निवासी को <strong>पूरी तरह से निःशुल्क</strong> प्रदान की जाती हैं।',
                 // SEO UPDATE: New FAQ translation (Hindi)
@@ -2013,10 +2065,6 @@ h2 {
             localStorage.setItem('msa_lang_pref', lang);
         }
         
-        // --- Theme Toggle Logic (REMOVED) ---
-        // Removed setTheme, getPreferredTheme, and initThemeToggle functions.
-
-
         // --- Dynamic Features ---
 
         // 1. Scroll-Triggered Fade-In Animation (Intersection Observer)
@@ -2053,6 +2101,7 @@ h2 {
                 if (current > end) {
                     current = end;
                 }
+                // Use the correct locale for number formatting
                 element.textContent = current.toLocaleString('en-IN'); 
                 if (current === end) {
                     clearInterval(timer);
@@ -2075,7 +2124,11 @@ h2 {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !hasAnimated) {
                         statNumbers.forEach(stat => {
-                            const target = parseInt(stat.getAttribute('data-target'));
+                            // Ensure the target number for meals served is correct for animation
+                            let target = parseInt(stat.getAttribute('data-target'));
+                            if (stat.id === 'stat2') {
+                                target = 150000; 
+                            }
                             animateCounter(stat, 0, target, 2000); 
                         });
                         hasAnimated = true;
@@ -2094,7 +2147,8 @@ h2 {
             const accordionHeaders = document.querySelectorAll('.accordion-header');
 
             accordionHeaders.forEach(header => {
-                header.addEventListener('click', () => {
+                header.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link/anchor behavior
                     const checkbox = header.previousElementSibling;
                     const isChecked = checkbox.checked;
 
@@ -2242,6 +2296,59 @@ h2 {
                 });
             });
         }
+        
+        // 7. NEW: Mobile Navigation Toggle Logic
+        function initMobileNav() {
+            const toggleButton = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('main-nav-links');
+            const faBars = toggleButton.querySelector('.fa-bars');
+            const faTimes = toggleButton.querySelector('.fa-times');
+
+            if (!toggleButton || !navLinks) return;
+
+            // Function to toggle menu state
+            function toggleMenu() {
+                const isOpen = navLinks.classList.toggle('is-open');
+                
+                // Update button icons and ARIA attributes
+                faBars.style.display = isOpen ? 'none' : 'inline-block';
+                faTimes.style.display = isOpen ? 'inline-block' : 'none';
+                toggleButton.setAttribute('aria-expanded', isOpen);
+                
+                // Prevent body scroll when menu is open on mobile
+                document.body.style.overflow = isOpen && window.innerWidth < 992 ? 'hidden' : '';
+            }
+
+            // Toggle menu on button click
+            toggleButton.addEventListener('click', toggleMenu);
+
+            // Close menu when a link inside is clicked (for smoother navigation on mobile)
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Only auto-close on mobile screen sizes
+                    if (window.innerWidth < 992) {
+                        toggleMenu(); 
+                    }
+                });
+            });
+
+            // Handle window resize: ensure desktop view resets properly
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 992 && navLinks.classList.contains('is-open')) {
+                    navLinks.classList.remove('is-open');
+                    faBars.style.display = 'inline-block';
+                    faTimes.style.display = 'none';
+                    toggleButton.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Initialize the correct icon state
+            if (!navLinks.classList.contains('is-open')) {
+                faBars.style.display = 'inline-block';
+                faTimes.style.display = 'none';
+            }
+        }
 
 
         // --- Initialization on Load ---
@@ -2272,12 +2379,13 @@ h2 {
             initStatCounters();
             initAccordion();
             initFooterParallax(); 
-            initGalleryFilters(); // **UPDATED: Initialize Gallery Filters with video logic**
+            initGalleryFilters(); 
+            initMobileNav(); // **NEW: Initialize mobile navigation**
             
             // 5. Initialize Welcome Modal
             initWelcomeModal();
 
-            // Handle the year for the footer copyright dynamically
+            // FIX: Handle the year for the footer copyright dynamically
             document.querySelector('[data-key="footer_copyright_year"]').textContent = new Date().getFullYear();
         });
     </script>
