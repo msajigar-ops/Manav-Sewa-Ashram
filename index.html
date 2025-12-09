@@ -17,6 +17,10 @@
     <meta property="og:image" content="https://www.yourdomain.org/placeholder-social-share-image.jpg">
     <meta property="og:site_name" content="Manav Seva Ashram">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <meta property="og:image" content="image_821180.png">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -572,6 +576,79 @@ h2 {
 }
 
 
+/* NEW: PROJECT SECTION STYLES */
+.project-card {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--color-shadow);
+    padding: 30px;
+    margin-bottom: 40px;
+    border-top: 5px solid var(--color-primary);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-background-alt);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+.project-header h3 {
+    font-family: 'Lora', serif;
+    color: var(--color-primary);
+    font-size: 1.8rem;
+    margin: 0;
+}
+.project-status {
+    font-weight: 700;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+.in-progress {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.project-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.project-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    transition: transform 0.3s ease;
+}
+.project-image-container img:hover {
+    transform: scale(1.02);
+}
+
+.material-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+.material-table th, .material-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid var(--color-background-alt);
+}
+.material-table th {
+    background-color: var(--color-background-alt);
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.material-table tr:nth-child(even) {
+    background-color: var(--color-background-main-page);
+}
+
+
 /* Founder Section Styling (New) */
 .founder-grid {
     display: grid;
@@ -1071,6 +1148,19 @@ h2 {
         order: -1; /* Place image above text on mobile */
     }
 
+    /* Projects Section Mobile Adjustment */
+    .project-content-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-image-container {
+        order: -1; /* Image on top on mobile */
+    }
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
     h1 { font-size: 3rem; }
     h2 { font-size: 2.2rem; }
     .hero { padding: 140px 0; }
@@ -1275,14 +1365,14 @@ h2 {
 <body data-lang="en"> <header class="main-header" role="banner">
         <div class="container nav-bar">
             <a href="#home" class="logo-img-wrapper" aria-label="Manav Seva Ashram Home">
-                <img src="Logo/logo.jpg" alt="Manav Seva Ashram (MSA) Swaroopganj Logo" class="logo-image">
+                <img src="Logo/logo.jpg" alt="Manav Seva Ashram (MSA) Swaroopganj Logo" class="logo-image" width="50" height="50">
                 <span class="logo-text">Manav Seva Ashram</span>
             </a>
             
             <nav class="main-nav" role="navigation" aria-label="Main Navigation">
                 <a href="#about" data-key="nav_about">About</a>
                 <a href="#impact" data-key="nav_impact">Impact</a>
-                <a href="#founder" data-key="nav_founder">Founder</a> <a href="#join" data-key="nav_join">Join Us</a>
+                <a href="#projects" data-key="nav_projects">Projects</a> <a href="#founder" data-key="nav_founder">Founder</a> <a href="#join" data-key="nav_join">Join Us</a>
                 <a href="#contact" data-key="nav_contact">Contact</a>
             </nav>
             
@@ -1328,7 +1418,7 @@ h2 {
                 </div>
             </div>
             <div class="intro-image">
-                <img src="MSA/M2.jpg" alt="Volunteer holding hand of abandoned elderly person at Manav Seva Ashram." loading="lazy">
+                <img src="MSA/M2.jpg" alt="Volunteer holding hand of abandoned elderly person at Manav Seva Ashram." loading="lazy" width="700" height="466">
             </div>
         </div>
     </section>
@@ -1375,35 +1465,36 @@ h2 {
             </div>
 
             <div class="gallery-grid" id="image-gallery">
+                
                 <div class="gallery-item visible" data-category="meals">
-                    <video controls autoplay loop muted>
+                    <video controls autoplay loop muted loading="lazy">
                         <source src="MSA/food.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
 
                 <div class="gallery-item visible" data-category="medical">
-                    <video controls autoplay loop muted>
+                    <video controls autoplay loop muted loading="lazy">
                         <source src="MSA/Medical.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
 
                 <div class="gallery-item visible" data-category="reconnection">
-                    <video controls autoplay loop muted>
+                    <video controls autoplay loop muted loading="lazy">
                         <source src="MSA/Reunions.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
 
                 <div class="gallery-item visible" data-category="reconnection">
-                    <video controls autoplay loop muted>
+                    <video controls autoplay loop muted loading="lazy">
                         <source src="MSA/Reunions2.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="gallery-item visible" data-category="lifetime">
-                    <video controls autoplay loop muted>
+                    <video controls autoplay loop muted loading="lazy">
                         <source src="MSA/Enjoy.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -1411,9 +1502,71 @@ h2 {
             </div>
         </div>
     </section>
+<section id="projects" class="section-padding bg-alt-light animate-on-scroll" role="region" aria-labelledby="projects_title">
+        <div class="container">
+            <h2 id="projects_title" class="section-title" data-key="projects_title">Our Current Projects & Construction Drives</h2>
+            <p class="section-subtitle" data-key="projects_subtitle" style="text-align: center; margin-top: -20px; margin-bottom: 40px; color: var(--color-text-gray);">Building a bigger, safer, and better home for more abandoned elders.</p>
 
+            <div class="project-card bg-light">
+                <div class="project-header">
+                    <h3 data-key="project1_title">Manav Seva Ashram Nirman (Phase I)</h3>
+                    <span class="project-status in-progress" data-key="project1_status">Status: In Progress</span>
+                </div>
+                <div class="project-content-grid">
+                    <div class="project-image-container">
+                        <img src="Logo/Project.jpg" alt="Poster requesting materials for Ashram construction: Sand, Cement, Bricks, Stone, Concrete, Rebar." loading="lazy">
+                    </div>
+                    <div class="project-details">
+                        <p data-key="project1_summary">Join us in the holy service of **Ashram Construction**. To accommodate more Prabhuji (abandoned elders) and provide them with proper medical and living facilities, we are building a new wing in Swaroopganj.</p>
+                        
+                        <p class="sub-heading" style="color: var(--color-primary); margin-top: 20px; margin-bottom: 10px;" data-key="project1_material_heading">Urgent Material Requirements</p>
+                        <table class="material-table">
+                            <thead>
+                                <tr>
+                                    <th data-key="material_col1">Material</th>
+                                    <th data-key="material_col2">Quantity Needed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-key="material_sand">Sand (बजरी)</td>
+                                    <td>110 Tractor</td>
+                                </tr>
+                                <tr>
+                                    <td data-key="material_cement">Cement (सीमेन्ट)</td>
+                                    <td>2000 Bag</td>
+                                </tr>
+                                <tr>
+                                    <td data-key="material_bricks">Bricks (ईंट)</td>
+                                    <td>25000</td>
+                                </tr>
+                                <tr>
+                                    <td data-key="material_stone">Stone (पत्थर)</td>
+                                    <td>90 Trolley</td>
+                                </tr>
+                                <tr>
+                                    <td data-key="material_concrete">Concrete (कंकरीट)</td>
+                                    <td>30 Quintal</td>
+                                </tr>
+                                <tr>
+                                    <td data-key="material_rebar">Rebar (सरीया)</td>
+                                    <td>90 Quintal</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="#donate" class="btn btn-primary" style="margin-top: 20px;" data-key="project_btn_donate">Support This Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-cta-block animate-on-scroll" style="margin-top: 60px;">
+                <h3 data-key="project_cta_title">Have Construction Materials to Donate?</h3>
+                <p data-key="project_cta_p">If you wish to donate materials directly, please contact our team to coordinate pickup/delivery.</p>
+                <a href="tel:+919602863972" class="btn btn-whatsapp" data-key="project_btn_contact">Call Jigar Rawal (9602863972)</a>
+            </div>
 
-    <section id="stats" class="section-padding cta-donate animate-on-scroll" role="region" aria-labelledby="stats_title" style="background-color: var(--color-background-alt);">
+        </div>
+    </section>
+<section id="stats" class="section-padding cta-donate animate-on-scroll" role="region" aria-labelledby="stats_title" style="background-color: var(--color-background-alt);">
         <div class="container text-center">
             <h2 id="stats_title" class="cta-title" data-key="stats_title" style="color: var(--color-primary);">Our Mission in Numbers</h2>
             <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; margin-top: 40px;">
@@ -1584,7 +1737,7 @@ h2 {
             <div class="footer-links">
                 <a href="#home" data-key="nav_home_footer">Home</a> | 
                 <a href="#about" data-key="nav_about_footer">About</a> | 
-                <a href="#founder" data-key="nav_founder_footer">Founder</a> | <a href="#donate" data-key="nav_donate_footer">Donate</a> | 
+                <a href="#projects" data-key="nav_projects_footer">Projects</a> | <a href="#founder" data-key="nav_founder_footer">Founder</a> | <a href="#donate" data-key="nav_donate_footer">Donate</a> | 
                 <a href="#join" data-key="nav_volunteer_footer">Volunteer</a>
             </div>
             <div class="social-icons" aria-label="Social Media Links">
@@ -1665,6 +1818,32 @@ h2 {
                 founder_word: '“एक समाज का सच्चा माप यह है कि वह अपने सबसे कमजोर लोगों—अपने बच्चों और अपने बुजुर्गों—के साथ कैसा व्यवहार करता है। यहाँ, हर व्यक्ति ईश्वर का एक जीता-जागता स्वरूप (प्रभुजी) है। हमारा कर्तव्य सिर्फ आश्रय प्रदान करना नहीं है, बल्कि उस सम्मान और उद्देश्य को बहाल करना है जो समाज ने उनसे छीन लिया। मेरा संकल्प यह सुनिश्चित करना है कि कोई भी बेसहारा आत्मा फिर कभी अकेली न चले।”',
                 founder_signature: 'श्री जिगर रावल',
                 nav_founder_footer: 'संस्थापक',
+                
+                // NEW PROJECT SECTION TRANSLATIONS
+                nav_projects: 'परियोजनाएं',
+                nav_projects_footer: 'परियोजनाएं',
+
+                projects_title: 'हमारे वर्तमान परियोजनाएँ और निर्माण अभियान',
+                projects_subtitle: 'अधिक बेसहारा बुजुर्गों के लिए एक बड़ा, सुरक्षित और बेहतर घर बनाना।',
+
+                project1_title: 'मानव सेवा आश्रम निर्माण (चरण I)',
+                project1_status: 'स्थिति: प्रगति पर',
+                project1_summary: 'हमारे साथ <strong>आश्रम निर्माण</strong> की पवित्र सेवा में शामिल हों। और अधिक प्रभुजी (बेसहारा बुजुर्गों) को समायोजित करने और उन्हें उचित चिकित्सा व रहने की सुविधाएँ प्रदान करने के लिए, हम स्वरूपगंज में एक नई विंग का निर्माण कर रहे हैं।',
+                project1_material_heading: 'अत्यावश्यक सामग्री आवश्यकताएँ',
+                project_btn_donate: 'इस परियोजना का समर्थन करें',
+
+                material_col1: 'सामग्री',
+                material_col2: 'आवश्यक मात्रा',
+                material_sand: 'बजरी (Sand)',
+                material_cement: 'सीमेन्ट (Cement)',
+                material_bricks: 'ईंट (Bricks)',
+                material_stone: 'पत्थर (Stone)',
+                material_concrete: 'कंकरीट (Concrete)',
+                material_rebar: 'सरीया (Rebar)',
+
+                project_cta_title: 'निर्माण सामग्री दान करना चाहते हैं?',
+                project_cta_p: 'यदि आप सीधे सामग्री दान करना चाहते हैं, तो पिकअप/डिलीवरी समन्वय के लिए हमारी टीम से संपर्क करें।',
+                project_btn_contact: 'जिगर रावल को कॉल करें (9602863972)',
 
                 // Footer Widget
                 footer_helpline_widget: 'आपातकालीन हेल्पलाइन: <a href="tel:+919602863972">+91 96028 63972</a> | ईमेल: <a href="mailto:info@manavsevaashram.org">info@manavsevaashram.org</a>',
@@ -1773,7 +1952,7 @@ h2 {
                 contact_address: '<strong>पता:</strong> मानव सेवा आश्रम, JWQ8+833, सर्विस रोड, **स्वरूपगंज, सिरोही**, राजस्थान 307023',
                 contact_helpline: '<strong>हेल्पलाइन:</strong> <a href="tel:+919602863972">+91 96028 63972</a>',
                 contact_whatsapp: '<strong>व्हाट्सएप:</strong> <a href="https://wa.me/919602863972" target="_blank">+91 96028 63972</a>',
-                contact_email: '<strong>ईमेल:</strong> <a href="mailto:msajigar@gmail.com">info@manavsevaashram.org</a>',
+                contact_email: '<strong>ईमेल:</strong> <a href="mailto:msajigar@gmail.com">msajigar@gmail.com</a>',
                 contact_hours: '<strong>समय:</strong> सोम - शनि, सुबह 10:00 बजे - शाम 5:00 बजे',
 
                 // Footer
@@ -2041,7 +2220,11 @@ h2 {
                             setTimeout(() => {
                                 item.classList.add('visible');
                                 if (videoElement) {
-                                    videoElement.play(); // Start video when visible
+                                    // Only attempt to play if video is visible after transition
+                                    videoElement.play().catch(error => {
+                                        // Catch common errors (e.g., autoplay blocked)
+                                        console.log('Video play prevented:', error);
+                                    }); 
                                 }
                             }, 10); 
                         } else {
