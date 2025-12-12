@@ -1202,50 +1202,57 @@ h2 {
     }
     
     /* MOBILE HEADER FIX: 992px */
+    
+    /* **UPDATED MOBILE NAV STYLES** */
     .main-nav {
-        /* Hide main nav links on tablets/large phones for a cleaner top bar */
-        /* To be overridden by JS for mobile menu */
-        /* Overridden by new rules below */
+        /* Overrides desktop margin and centers nav on small screens up to 992px */
+        margin-left: auto; 
+        margin-right: 0;
         
-        /* New Mobile Nav Styles */
         position: absolute;
-        top: 86px; /* Adjusted to sit below the header on mobile */
-        left: 0;
-        width: 100%;
-        background-color: var(--color-background-light-active); /* White/Card BG */
-        border-top: 1px solid var(--color-background-alt);
-        padding: 10px 0;
-        box-shadow: 0 4px 10px var(--color-shadow);
+        top: 65px; /* Adjusted to sit just below the header */
+        right: 15px; /* Align to the right edge with a margin */
+        width: calc(100% - 30px); /* Account for side margins */
+        max-width: 250px; /* Limit width to be usable dropdown box */
+        
+        background-color: var(--color-background-light-active); /* Solid White Background */
+        padding: 0; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow */
         flex-direction: column;
-        align-items: center;
-        /* Start hidden (important for transition) */
-        transform: translateY(-100%);
+        align-items: flex-start; /* Align links to the left */
+        
+        transform: translateY(-10px); /* Start slightly off-screen */
         opacity: 0;
-        /* Force display flex to be visible when 'is-open' is applied */
+        
+        /* Ensures it shows up over content and transitions work */
         display: flex !important; 
         transition: transform 0.3s ease-out, opacity 0.3s ease-out;
         z-index: 999; 
         max-height: 0; 
         overflow: hidden;
+        border-radius: 8px; /* Added slight rounding */
+        border: 1px solid var(--color-background-alt); 
     }
     
     .main-nav.is-open {
         transform: translateY(0);
         opacity: 1;
-        max-height: 500px; /* Large enough value to show all links */
+        max-height: 500px; /* Show all links */
     }
     
     .main-nav a {
         /* Mobile link styling */
         width: 100%;
-        text-align: center;
-        padding: 12px 0;
+        text-align: left; /* Align text left */
+        padding: 15px 20px; /* Increased vertical padding */
         margin: 0; /* Remove left margin */
         border-bottom: 1px solid var(--color-background-alt);
+        color: var(--color-text-dark); /* Ensure dark color for readability */
     }
     .main-nav a:last-child {
         border-bottom: none;
     }
+    /* END: UPDATED MOBILE NAV STYLES */
     
     .logo-text {
         font-size: 1.5rem; /* Slightly smaller text on tablets */
