@@ -141,12 +141,13 @@ h2 {
 /* BUTTONS - UPDATED STYLES */
 .btn {
     display: inline-block;
-    padding: 14px 30px; 
+    /* REDUCED DEFAULT PADDING AND FONT SIZE */
+    padding: 10px 20px; 
     border-radius: 50px; 
     text-decoration: none;
     font-weight: 700;
     transition: all 0.3s ease;
-    font-size: 1.05rem;
+    font-size: 1rem; /* Reduced from 1.05rem */
     border: 2px solid transparent;
 }
 
@@ -1131,36 +1132,7 @@ h2 {
 }
 /* === END: POP-UP MODAL STYLES === */
 
-/* === ENHANCEMENT 1: STICKY DONATE BUTTON === */
-.sticky-donate-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 10001; /* Above floating contact box */
-    /* Inherits styling from .btn .btn-primary */
-    animation: pulse-donate 2s infinite; 
-}
-/* Custom pulse for the donate button (orange color) */
-@keyframes pulse-donate {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 20px rgba(255, 183, 3, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 183, 3, 0);
-    }
-}
-@media (max-width: 768px) {
-    .sticky-donate-btn {
-        right: 15px;
-        bottom: 15px;
-        padding: 10px 18px; /* Match mobile header button size */
-        font-size: 1rem;
-    }
-}
-/* === END ENHANCEMENT 1 === */
+/* === REMOVED STICKY DONATE BUTTON STYLES === */
 
 
 /* MEDIA QUERIES (Responsiveness) */
@@ -1248,81 +1220,58 @@ h2 {
     .menu-toggle {
         display: block; 
     }
+    
+    /* MODIFIED: Ensure header button looks good on mobile (matches new default size) */
+    .header-functional-group .btn-primary {
+        padding: 10px 20px; /* Resetting to the new default for consistency */
+        font-size: 1rem;
+    }
 }
 
 
 /* 768px: Standard Mobile/Portrait Tablet */
 @media (max-width: 768px) {
-    /* REVISION: Use flex-wrap and justify-content: space-between to keep a single row for key elements */
+    /* **FIX FOR FLOATING HEADER (START) - Ensure logo, menu, and button are on one line** */
     .nav-bar {
-        /* Revert to single-row structure and allow wrapping for navigation links */
+        /* Ensure single-row structure by overriding flex-wrap on primary row */
         flex-direction: row; 
         align-items: center; 
-        flex-wrap: wrap;
-        /* Ensure key elements are spaced out by stretching the container */
+        flex-wrap: nowrap; /* Prevent immediate wrapping of logo/buttons */
         justify-content: space-between;
     }
     
     .logo-img-wrapper {
-        height: 40px; /* Smaller logo height */
+        height: 40px; 
         order: 1; 
         margin-bottom: 0;
+        /* Allow logo text to shrink slightly to fit */
+        flex-shrink: 1;
     }
     .logo-text {
         font-size: 1.3rem;
+        /* Prevents logo text from causing wrapping issues */
+        white-space: nowrap; 
     }
     
-    /* Functional Group Styling for Mobile */
+    /* Functional Group (Donate Button) and Menu Toggle */
     .header-functional-group {
         order: 2; /* Keep functional group next (right) */
         margin-left: auto; /* Push group to the right */
         display: flex;
         align-items: center;
         gap: 8px; /* Reduce gap between elements on mobile */
-    }
-
-    .language-selector {
-        /* Removed margin adjustment as button is now gone. Keeps space clean */
-        margin-left: 0;
-        margin-right: 0; 
+        /* Important: Shrink this entire group to allow space for the logo */
+        flex-shrink: 0;
     }
     
-    /* .btn-donate class styling is irrelevant in header now */
-    
-    /* MOBILE NAVIGATION STYLES */
-    .main-nav {
-        /* Full width and stack underneath the header bar when open */
-        order: 3;
-        width: 100%;
-        margin-top: 10px;
-        margin-left: 0;
-        margin-right: 0;
-        background-color: var(--color-background-light-active);
-        padding: 10px 0;
-        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05);
-        
-        /* Initial state: Hidden off-screen/compact */
-        display: flex;
-        flex-direction: column;
-        height: 0;
-        overflow: hidden;
-    }
-
-    .main-nav.is-open {
-        height: auto; /* Allow height to expand */
-        padding: 15px 0;
+    .menu-toggle {
+        order: 3; /* Ensure toggle is last element in row */
+        margin-left: 8px; /* Add slight space between button and toggle */
+        flex-shrink: 0;
     }
     
-    .main-nav a {
-        margin: 8px 20px;
-        font-size: 1.1rem;
-        padding: 5px 0;
-        border-bottom: 1px solid var(--color-background-alt);
-    }
-    .main-nav a:last-child {
-        border-bottom: none;
-    }
-
+    /* Mobile Navigation is still handled by JS toggling .is-open class and media queries at 992px */
+    /* **FIX FOR FLOATING HEADER (END)** */
 
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
@@ -1404,8 +1353,6 @@ h2 {
     .language-selector {
         margin-bottom: 0; /* Remove old margin */
     }
-    
-    /* .btn-donate class styling is irrelevant in header now */
 }
         </style>
     </head>
@@ -1432,13 +1379,10 @@ h2 {
             </nav>
             
             <div class="header-functional-group">
-                <div class="language-selector" role="radiogroup" aria-label="Language Selector">
-                    <a href="#" class="lang-link active" data-lang="en" aria-checked="true" role="radio">EN</a>
-                    <span class="lang-separator">|</span>
-                    <a href="#" class="lang-link" data-lang="hi" aria-checked="false" role="radio">हिंदी</a>
-                </div>
-                
-                </div>
+                <a href="#donate" class="btn btn-primary" aria-label="Donate Now to Manav Seva Ashram">
+                    <i class="fas fa-heart" aria-hidden="true"></i> Donate
+                </a>
+            </div>
         </div>
     </header>
 
@@ -1689,7 +1633,7 @@ h2 {
                     <p class="supporting-line" data-key="qr_p1">You can support us by donating **anything as your heart desires or as your wise** (*manav seva*). Every small contribution helps us provide meals, medicine, and shelter in Swaroopganj.</p>
                     
                     <div class="qr-wrapper">
-                        <img src="MSA/MSA.jpg" alt="Manav Seva Ashram UPI QR Code for instant donations" class="qr-image" loading="lazy">
+                        <img src="MSA/MSA.jpg" alt="Manav Seva Ashram UPI QR Code for instant donations" loading="lazy">
                         <p class="upi-id">UPI ID: 9602863972@ybl</p>
                     </div>
                 </div>
@@ -1819,10 +1763,6 @@ h2 {
         </div>
     </footer>
     
-    <a href="#donate" class="btn btn-primary sticky-donate-btn" aria-label="Donate Now to Manav Seva Ashram">
-        <i class="fas fa-heart" aria-hidden="true"></i> Donate
-    </a>
-
     <div class="floating-contact-box" role="toolbar" aria-label="Quick Contact Links">
         
         <a href="https://www.instagram.com/jigar_rawal77?igsh=bW1tNWJrb2E1dnR6" class="contact-icon-link icon-instagram" target="_blank" aria-label="Visit our Instagram Page">
@@ -1867,178 +1807,8 @@ h2 {
         const slides = document.querySelectorAll('.hero-slide');
         const mainFooter = document.querySelector('.main-footer');
         
-        // --- Translation Data (Retained + Modal Content) ---
-        const translations = {
-            hi: {
-                // NEW MODAL TRANSLATIONS
-                modal_title: 'आप हमारी पहली आशा हैं।',
-                modal_p1: 'मानव सेवा आश्रम बेसहारा बुजुर्गों और मानसिक रूप से चुनौतीपूर्ण व्यक्तियों को <strong>मुफ्त, आजीवन आश्रय, भोजन और देखभाल</strong> प्रदान करता है।',
-                modal_p2: 'यदि आपको तत्काल सहायता की आवश्यकता वाला कोई खोया हुआ या बेसहारा वरिष्ठ व्यक्ति मिले, तो कृपया हमारी 24/7 हेल्पलाइन पर संपर्क करें।',
-                modal_helpline: 'आपातकालीन हेल्पलाइन: <a href="tel:+919602863972">+91 96028 63972</a>',
-                modal_btn_donate: 'आज ही एक जीवन को सहारा दें (दान करें)',
-                modal_btn_continue: 'वेबसाइट पर जारी रखें',
-
-                // Founder Section
-                nav_founder: 'संस्थापक',
-                // SEO UPDATE: Hindi translation for founder title
-                founder_title: 'संस्थापक, **जिगर रावल**: मानव सेवा आश्रम, स्वरूपगंज के संस्थापक से मिलें',
-                founder_subheading: 'हमारा मार्गदर्शक सिद्धांत',
-                founder_quote_title: 'हृदय से एक शब्द',
-                // SEO UPDATE: Hindi translation for founder name
-                founder_name: 'श्री जिगर रावल, संस्थापक, मानव सेवा आश्रम',
-                founder_word: '“एक समाज का सच्चा माप यह है कि वह अपने सबसे कमजोर लोगों—अपने बच्चों और अपने बुजुर्गों—के साथ कैसा व्यवहार करता है। यहाँ, हर व्यक्ति ईश्वर का एक जीता-जागता स्वरूप (प्रभुजी) है। हमारा कर्तव्य सिर्फ आश्रय प्रदान करना नहीं है, बल्कि उस सम्मान और उद्देश्य को बहाल करना है जो समाज ने उनसे छीन लिया। मेरा संकल्प यह सुनिश्चित करना है कि कोई भी बेसहारा आत्मा फिर कभी अकेली न चले।”',
-                founder_signature: 'श्री जिगर रावल',
-                nav_founder_footer: 'संस्थापक',
-                btn_read_founder: 'संस्थापक की कहानी पढ़ें', // ENHANCEMENT 2
-
-                
-                // NEW PROJECT SECTION TRANSLATIONS
-                nav_projects: 'परियोजनाएं',
-                nav_projects_footer: 'परियोजनाएं',
-
-                projects_title: 'हमारे वर्तमान परियोजनाएँ और निर्माण अभियान',
-                projects_subtitle: 'अधिक बेसहारा बुजुर्गों के लिए एक बड़ा, सुरक्षित और बेहतर घर बनाना।',
-
-                project1_title: 'मानव सेवा आश्रम निर्माण (चरण I)',
-                project1_status: 'स्थिति: प्रगति पर',
-                project1_summary: 'हमारे साथ <strong>आश्रम निर्माण</strong> की पवित्र सेवा में शामिल हों। और अधिक प्रभुजी (बेसहारा बुजुर्गों) को समायोजित करने और उन्हें उचित चिकित्सा व रहने की सुविधाएँ प्रदान करने के लिए, हम स्वरूपगंज में एक नई विंग का निर्माण कर रहे हैं।',
-                project1_material_heading: 'अत्यावश्यक सामग्री आवश्यकताएँ',
-                project_btn_donate: 'इस परियोजना का समर्थन करें',
-
-                material_col1: 'सामग्री',
-                material_col2: 'आवश्यक मात्रा',
-                material_sand: 'बजरी (Sand)',
-                material_cement: 'सीमेन्ट (Cement)',
-                material_bricks: 'ईंट (Bricks)',
-                material_stone: 'पत्थर (Stone)',
-                material_concrete: 'कंकरीट (Concrete)',
-                material_rebar: 'सरीया (Rebar)',
-
-                project_cta_title: 'निर्माण सामग्री दान करना चाहते हैं?',
-                project_cta_p: 'यदि आप सीधे सामग्री दान करना चाहते हैं, तो पिकअप/डिलीवरी समन्वय के लिए हमारी टीम से संपर्क करें।',
-                project_btn_contact: 'जिगर रावल को कॉल करें (9602863972)',
-
-                // Footer Widget
-                footer_helpline_widget: 'आपातकालीन हेल्पलाइन: <a href="tel:+919602863972">+91 96028 63972</a> | ईमेल: <a href="mailto:info@manavsevaashram.org">info@manavsevaashram.org</a>',
-
-
-                // New Stats Translations
-                stats_title: 'संख्याओं में हमारा मिशन',
-                stat1_label: 'वर्तमान में देखभाल में जीवन',
-                stat2_label: 'सालाना परोसे जाने वाले भोजन',
-                stat3_label: 'परिवारों का पुनर्मिलन',
-
-                // Gallery Filter Translations
-                gallery_title: 'हमारी सेवा की झलक: आश्रम में जीवन', // ENHANCEMENT 2
-                gallery_filter_all: 'सभी दिखाएँ',
-                gallery_filter_meals: 'दैनिक भोजन',
-                gallery_filter_medical: 'चिकित्सा सहायता',
-                gallery_filter_reconnection: 'पुनर्मिलन',
-                gallery_filter_lifetime: 'आजीवन देखभाल',
-                
-                // Header/Navigation
-                nav_about: 'हमारे बारे में',
-                nav_impact: 'प्रभाव',
-                nav_stories: 'कहानियाँ',
-                nav_join: 'जुड़ें',
-                nav_contact: 'संपर्क',
-                // REMOVED: btn_donate_now: 'अभी दान करें',
-                
-                // Hero Section
-                hero_title: 'जहाँ हर जीवन सम्मान और प्रेम का हकदार है',
-                // SEO UPDATE: Hindi subtitle includes location
-                hero_subtitle: 'स्वरूपगंज, सिरोही में बुजुर्गों, लापता वरिष्ठों और मानसिक रूप से चुनौतीपूर्ण व्यक्तियों को भोजन, आश्रय और एक स्थायी परिवार प्रदान करना।',
-                btn_donate_life: 'अभी दान करें और जीवन बदलें',
-                btn_whatsapp: 'व्हाट्सएप करें 💬',
-                btn_volunteer: 'स्वयंसेवक बनें',
-
-                // About Section
-                about_subheading: 'हमारा मिशन',
-                about_title: 'बेसहारा बुजुर्गों और मानसिक रूप से चुनौतीपूर्ण लोगों के लिए आश्रय और देखभाल प्रदान करना',
-                // SEO UPDATE: Hindi p1 includes location
-                about_p1: 'मानव सेवा आश्रम (MSA) की यात्रा एक सरल, लेकिन गहन, एहसास के साथ शुरू हुई: हमारे सड़कों पर बेसहारा बुजुर्गों और मानसिक रूप से चुनौतीपूर्ण व्यक्तियों का गहरा अकेलापन और पीड़ा। हम <strong>सम्मान</strong> बहाल करने, <strong>बिना शर्त समर्थन</strong> प्रदान करने, और खोई हुई आत्माओं को उनके परिवारों से फिर से जोड़ने में मदद करने के लिए मौजूद हैं।',
-                about_values_p: '<strong>मूल्य:</strong> करुणा, सेवा, सम्मान, और मानवता।',
-
-                // Impact Section (Services)
-                impact_title: 'हमारा प्रभाव: आजीवन देखभाल, चिकित्सा सहायता, और परिवार से पुनर्मिलन सेवाएँ',
-                service1_title: 'दैनिक भोजन और पोषण',
-                service1_p: 'हम प्रतिदिन तीन ताज़ा, स्वच्छ और संतुलित भोजन प्रदान करते हैं, यह सुनिश्चित करते हुए कि हर निवासी शारीरिक और आत्मिक रूप से पोषित हो।',
-                service2_title: 'चिकित्सा और मानसिक सहायता',
-                service2_p: 'एक सुरक्षित और सहायक वातावरण में नियमित स्वास्थ्य जाँच, आवश्यक दवाएं, परामर्श, और चिकित्सा प्रदान की जाती है।',
-                service3_title: 'परिवार से पुनर्मिलन',
-                service3_p: 'हमारी समर्पित टीम लापता वरिष्ठों के परिवारों का पता लगाने के लिए अधिकारियों के साथ अथक रूप से काम करती है, पुनर्मिलन की खुशी को सुगम बनाती है।',
-                service4_title: 'आजीवन देखभाल',
-                service4_p: 'जिनके परिवार नहीं हैं, उनके लिए आश्रम उनका स्थायी, प्रेमपूर्ण घर बन जाता है, यह सुनिश्चित करते हुए कि वे अपने शेष वर्ष सम्मान के साथ जिएं।',
-
-                // CTA Donate Section
-                cta_donate_title: 'सहारा बनें। आज ही दान करें।',
-                cta_donate_subtitle: 'आपका 100% योगदान सीधे भोजन, चिकित्सा देखभाल और आजीवन आश्रय प्रदान करने में जाता है।',
-                option_onetime: 'एक बार का दान',
-                option_monthly: 'मासिक समर्थक',
-                option_material: 'सामग्री दान',
-                cta_donate_legal: 'आपका दान [धारा 80G] के तहत कर-मुक्त है।',
-
-                // QR Donation Section (No bank details translations remain)
-                qr_subheading: 'तत्काल समर्थन',
-                qr_title: 'तुरंत स्कैन करें और दान करें',
-                // SEO UPDATE: Hindi p1 includes location
-                qr_p1: 'आप <strong>जो भी दिल से चाहते हैं या आपकी बुद्धि के अनुसार</strong> (<em>मानव सेवा</em>) दान करके हमारा समर्थन कर सकते हैं। हर छोटा योगदान हमें स्वरूपगंज में भोजन, दवा और आश्रय प्रदान करने में मदद करता है।',
-                
-                // Donor Form CTA Block
-                donor_form_title: '80G कर रसीद चाहिए?',
-                donor_form_p1: 'कृपया भुगतान करने के बाद आधिकारिक कर रसीद (80G) ईमेल द्वारा प्राप्त करने के लिए हमारा पुष्टि फॉर्म भरें।',
-                donor_btn_submit: 'रसीद पुष्टि फॉर्म पर जाएं',
-                
-                // Volunteer CTA Block
-                volunteer_cta_title: 'स्वयंसेवा के लिए तैयार हैं?',
-                volunteer_cta_p: 'हमारे परिवार में शामिल होने और बेसहारा बुजुर्गों के जीवन में बदलाव लाना शुरू करने के लिए ऑनलाइन आवेदन करें।',
-                volunteer_btn_submit: 'स्वयंसेवक आवेदन फॉर्म भरें',
-
-
-                // Join Us Section
-                join_subheading: 'हाथ बटाएं',
-                join_title: 'अपना उद्देश्य ढूंढें। स्वयंसेवक बनें।',
-                // SEO UPDATE: Hindi p1 includes location
-                join_p1: 'आपका समय और कौशल अमूल्य हैं। स्वयंसेवकों के हमारे बढ़ते परिवार में शामिल हों और निःस्वार्थ सेवा (<em>सेवा</em>) की गहरी खुशी का अनुभव करें।',
-                join_list1: '<strong>देखभाल:</strong> समय बिताना, पढ़ना, और गतिविधियों में सहायता करना।',
-                join_list2: '<strong>चिकित्सा सहायता:</strong> (डॉक्टरों/नर्सों के लिए) स्वास्थ्य जाँच और चिकित्सा सहायता।',
-                join_list3: '<strong>जागरूकता और व्यवस्थापन:</strong> कागजी कार्रवाई और आउटरीच अभियानों में मदद करना।',
-                btn_start_journey: 'अपनी स्वयंसेवा यात्रा शुरू करें',
-
-                // FAQ Section
-                faq_title: 'सामान्य प्रश्न (FAQ)',
-                faq1_q: 'मैं आश्रम में किसी को कैसे भर्ती करा सकता हूँ?',
-                // FIX: Updated the Hindi FAQ admission number
-                faq1_a: 'कृपया हमारे <strong>आपातकालीन/प्रवेश हेल्पलाइन</strong> पर [+91 9602863972] कॉल करें। हमारी टीम आपको प्रारंभिक स्क्रीनिंग और दस्तावेज़ीकरण प्रक्रिया के माध्यम से मार्गदर्शन करेगी। प्रवेश सख्ती से आवश्यकता और वर्तमान उपलब्धता पर आधारित है।',
-                faq2_q: 'क्या आश्रम देखभाल के लिए कोई शुल्क लेता है?',
-                faq2_a: 'नहीं। भोजन, आश्रय, चिकित्सा देखभाल और कपड़े सहित सभी सेवाएँ हर निवासी को <strong>पूरी तरह से निःशुल्क</strong> प्रदान की जाती है।',
-                // SEO UPDATE: New FAQ translation (Hindi)
-                faq4_q: 'मानव सेवा आश्रम कहाँ स्थित है (सिरोही/आबू रोड)?',
-                faq4_a: 'मानव सेवा आश्रम राजस्थान के सिरोही जिले में आबू रोड के पास **स्वरूपगंज** में स्थित है (अक्सर सरूपगंज के रूप में खोजा जाता है)। हमारा मुख्य मिशन स्थानीय और क्षेत्रीय बेसहारा बुजुर्गों की सेवा पर केंद्रित है।',
-                faq3_q: 'मैं यह कैसे सुनिश्चित कर सकता हूँ कि मेरे दान का उपयोग प्रभावी ढंग से किया जाए?',
-                faq3_a: 'मानव सेवा आश्रम पारदर्शिता के लिए प्रतिबद्ध है। आपका 100% दान सीधे हमारे निवासियों की देखभाल (भोजन, दवा, आश्रय रखरखाव) के लिए आवंटित किया जाता है। आप प्रमुख योगदानों के लिए एक ऑडिट रिपोर्ट का अनुरोध कर सकते हैं।',
-
-
-                // Contact Section
-                contact_map_title: 'हमारा स्थान',
-                contact_subheading: 'संपर्क करें',
-                contact_title: 'हम मदद के लिए यहाँ हैं।',
-                // SEO UPDATE: Hindi address includes Sirohi
-                contact_address: '<strong>पता:</strong> मानव सेवा आश्रम, JWQ8+833, सर्विस रोड, **स्वरूपगंज, सिरोही**, राजस्थान 307023',
-                contact_helpline: '<strong>हेल्पलाइन:</strong> <a href="tel:+919602863972">+91 96028 63972</a>',
-                contact_whatsapp: '<strong>व्हाट्सएप:</strong> <a href="https://wa.me/919602863972" target="_blank">+91 96028 63972</a>',
-                contact_email: '<strong>ईमेल:</strong> <a href="mailto:msajigar@gmail.com">msajigar@gmail.com</a>',
-                contact_hours: '<strong>समय:</strong> सोम - शनि, सुबह 10:00 बजे - शाम 5:00 बजे',
-
-                // Footer
-                nav_home_footer: 'होम',
-                nav_about_footer: 'हमारे बारे में',
-                nav_donate_footer: 'दान करें',
-                nav_volunteer_footer: 'स्वयंसेवक',
-                footer_copyright_year: '2025',
-                footer_rights: 'सभी अधिकार सुरक्षित।',
-            }
-        };
+        // --- Translation Data (Empty/Removed) ---
+        const translations = {};
 
         // Original English Text Storage for easy switching back
         const originalTexts = {};
@@ -2054,7 +1824,7 @@ h2 {
             setTimeout(showSlides, 5000); // Change image every 5 seconds
         }
 
-        // Translation Logic
+        // Translation Logic - Simplified to just handle English defaults
         function storeOriginalTexts() {
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(element => {
@@ -2063,32 +1833,11 @@ h2 {
             });
         }
         
-        // ENHANCEMENT 3: Cleaned up and modernized the updateContent function
         function updateContent(lang) {
+            // Since all translations are removed, this is a no-op for content,
+            // but maintains the structure in case keys are later used dynamically.
             const body = document.body;
-            body.setAttribute('data-lang', lang);
-
-            const elements = document.querySelectorAll('[data-key]');
-            const langData = translations[lang];
-
-            elements.forEach(element => {
-                const key = element.getAttribute('data-key');
-                let newText = (lang === 'en' && originalTexts[key]) ? originalTexts[key] : (langData && langData[key]);
-                
-                if (newText) {
-                    element.innerHTML = newText;
-                }
-            });
-
-            // Update ARIA attributes for language links
-            const langLinks = document.querySelectorAll('.lang-link');
-            langLinks.forEach(l => {
-                const isActive = l.getAttribute('data-lang') === lang;
-                l.classList.toggle('active', isActive);
-                l.setAttribute('aria-checked', isActive ? 'true' : 'false');
-            });
-            
-            localStorage.setItem('msa_lang_pref', lang);
+            body.setAttribute('data-lang', 'en'); 
         }
         
         // --- Dynamic Features ---
@@ -2373,20 +2122,8 @@ h2 {
             // 1. Store the original English texts first
             storeOriginalTexts();
             
-            // 2. Initialize Language Switch
-            const langLinks = document.querySelectorAll('.lang-link');
-            const storedLang = localStorage.getItem('msa_lang_pref') || 'en'; 
-
-            langLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault(); 
-                    const newLang = e.target.getAttribute('data-lang');
-                    updateContent(newLang);
-                });
-            });
-            
-            // Set initial content to the stored language (defaults to 'en')
-            updateContent(storedLang); 
+            // 2. Initialize Language Switch (Simplified)
+            updateContent('en'); 
             
             // 3. Start Slideshow
             showSlides();
