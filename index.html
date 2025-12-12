@@ -352,15 +352,13 @@ h2 {
     align-items: center;
 }
 
-/* Language Selector Styles - REMOVED HINDI */
+/* Language Selector Styles - REMOVED */
 .language-selector {
-    /* Hide the entire language selector element */
     display: none;
 }
 
-/* NEW: Mobile Hamburger Menu Button */
+/* NEW: Mobile Hamburger Menu Button - REMOVED */
 .menu-toggle {
-    /* Hide by default on desktop, but keep the definition */
     display: none; 
     background: none;
     border: none;
@@ -1196,6 +1194,7 @@ h2 {
     
     /* MOBILE HEADER FIX: 992px */
     .nav-bar {
+        /* Ensure main nav links are hidden if the hamburger menu is removed (which it is) */
         padding: 10px 20px; 
         margin: 0 auto 20px;
         border-radius: 30px; /* Slightly less rounded on small screens */
@@ -1206,8 +1205,7 @@ h2 {
     }
 
     .main-nav {
-        /* Hide main nav links on tablets/large phones for a cleaner top bar */
-        /* To be overridden by JS for mobile menu */
+        /* HIDE desktop nav links on screens <= 992px */
         display: none; 
     }
     .logo-text {
@@ -1219,30 +1217,26 @@ h2 {
         max-width: 100%;
     }
 
-    /* Show the hamburger button on screens up to 992px */
+    /* Hide the hamburger button on screens up to 992px (It was already hidden by default) */
     .menu-toggle {
-        display: block; 
+        display: none; 
     }
 }
 
 
 /* 768px: Standard Mobile/Portrait Tablet */
 @media (max-width: 768px) {
-    /* REVISION: Use flex-wrap and justify-content: space-between to keep a single row for key elements */
+    /* Mobile Header/Pill Fix for Logo and Button */
     .nav-bar {
-        /* Revert to single-row structure and allow wrapping for navigation links */
         flex-direction: row; 
         align-items: center; 
-        flex-wrap: wrap;
-        /* Ensure key elements are spaced out by stretching the container */
         justify-content: space-between;
-        
-        /* Mobile adjustment for smaller pill height */
+        flex-wrap: nowrap; /* Prevent wrapping for the two remaining items */
         padding: 8px 15px; 
     }
     
     .logo-img-wrapper {
-        height: 40px; /* Smaller logo height */
+        height: 40px;
         order: 1; 
         margin-bottom: 0;
     }
@@ -1250,73 +1244,35 @@ h2 {
         font-size: 1.3rem;
     }
     
-    /* Functional Group Styling for Mobile */
+    .main-nav {
+        /* Ensure navigation block remains invisible */
+        display: none !important;
+    }
+    
     .header-functional-group {
-        order: 2; /* Keep functional group next (right) */
-        /* Use order to arrange elements within the group on mobile */
+        order: 2; /* Far right */
         display: flex;
         align-items: center;
-        gap: 8px; /* Reduce gap between elements on mobile */
+        gap: 8px; 
         margin-left: auto; 
     }
 
     .language-selector {
-        /* Hide language selector entirely on mobile */
-        display: none;
+        display: none; /* Already hidden, double check for safety */
     }
     
     .btn-donate {
-        /* Move donate button to the center-right of the functional group */
-        order: 2; 
+        order: 2; /* Forces donate button to be the main element on the right */
         margin-top: 0;
-        padding: 8px 14px; /* Reduced button padding */
+        padding: 8px 14px; 
         font-size: 0.9rem;
     }
 
     .menu-toggle {
-        /* HIDE HAMBURGER ICON ON MOBILE VIEW */
-        display: none;
+        display: none; /* Ensure hamburger is hidden */
     }
     
-    /* MOBILE NAVIGATION STYLES - Need adjustment for the new .nav-bar container */
-    .main-nav {
-        /* On mobile open, it must break out of the pill wrapper to span full width */
-        order: 3;
-        width: 100%;
-        margin-top: 10px;
-        /* Calculate negative margin based on .nav-bar horizontal padding (15px * 2 = 30px removed from the container size) */
-        margin-left: -15px; 
-        margin-right: -15px;
-        background-color: var(--color-background-light-active);
-        padding: 10px 15px; /* Padding matches the original .nav-bar padding */
-        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05);
-        border-radius: 0 0 30px 30px; /* Round only the bottom edges when expanded */
-        
-        /* Initial state: Hidden off-screen/compact */
-        /* Since the toggle is removed, this navigation functionality is essentially disabled,
-           but the CSS needs to maintain the display: none default from above (992px media query). 
-           We rely on the display: none set at 992px to hide it completely when the screen is small. */
-    }
-
-    .main-nav.is-open {
-        /* If the toggle was active, this would expand it. Keeping it for safety/future use. */
-        height: auto; 
-        padding: 15px 30px;
-    }
-    
-    .main-nav a {
-        margin: 8px 0; /* Remove horizontal margin */
-        font-size: 1.1rem;
-        padding: 5px 0;
-        border-bottom: 1px solid var(--color-background-alt);
-    }
-    .main-nav a:last-child {
-        border-bottom: none;
-    }
-
-
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
+    /* HERO SPACING ADJUSTMENT */
     .hero { padding: 120px 0; }
     
     /* Adjusted for stacking three buttons */
@@ -2120,15 +2076,13 @@ h2 {
             });
         }
         
-        // 7. Mobile Navigation Toggle Logic (REMOVED: Now does nothing since the toggle button is removed)
+        // 7. Mobile Navigation Toggle Logic (REMOVED)
         function initMobileNav() {
-            // Since the menu toggle is removed, this function is neutralized.
-            // On desktop, the main links are always visible.
-            // On mobile, the main links are always hidden (via CSS @992px) as the toggle button is gone.
+            // Functionality removed as the mobile menu toggle button is gone.
             const navLinks = document.getElementById('main-nav-links');
             if (navLinks && window.innerWidth < 992) {
-                 // In a real-world site, you'd likely want *some* way to access the nav on mobile.
-                 // We keep it hidden as requested by removing the toggle mechanism.
+                // Ensure desktop nav links remain hidden on mobile.
+                navLinks.style.display = 'none';
             }
         }
 
