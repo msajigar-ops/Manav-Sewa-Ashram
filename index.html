@@ -347,7 +347,8 @@ h2 {
     align-items: center;
     font-size: 0.95rem;
     margin-left: 20px; 
-    margin-right: 15px; 
+    /* Adjust margin since the button is gone */
+    margin-right: 0; 
 }
 
 .lang-link {
@@ -1130,6 +1131,37 @@ h2 {
 }
 /* === END: POP-UP MODAL STYLES === */
 
+/* === ENHANCEMENT 1: STICKY DONATE BUTTON === */
+.sticky-donate-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10001; /* Above floating contact box */
+    /* Inherits styling from .btn .btn-primary */
+    animation: pulse-donate 2s infinite; 
+}
+/* Custom pulse for the donate button (orange color) */
+@keyframes pulse-donate {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(255, 183, 3, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 183, 3, 0);
+    }
+}
+@media (max-width: 768px) {
+    .sticky-donate-btn {
+        right: 15px;
+        bottom: 15px;
+        padding: 10px 18px; /* Match mobile header button size */
+        font-size: 1rem;
+    }
+}
+/* === END ENHANCEMENT 1 === */
+
 
 /* MEDIA QUERIES (Responsiveness) */
 
@@ -1250,16 +1282,12 @@ h2 {
     }
 
     .language-selector {
+        /* Removed margin adjustment as button is now gone. Keeps space clean */
         margin-left: 0;
         margin-right: 0; 
     }
     
-    .btn-donate {
-        margin-top: 0;
-        /* Reduce padding slightly for a tighter mobile fit */
-        padding: 10px 18px; 
-        font-size: 1rem;
-    }
+    /* .btn-donate class styling is irrelevant in header now */
     
     /* MOBILE NAVIGATION STYLES */
     .main-nav {
@@ -1377,11 +1405,7 @@ h2 {
         margin-bottom: 0; /* Remove old margin */
     }
     
-    /* Make the button even tighter on small screens */
-    .btn-donate {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-    }
+    /* .btn-donate class styling is irrelevant in header now */
 }
         </style>
     </head>
@@ -1414,17 +1438,16 @@ h2 {
                     <a href="#" class="lang-link" data-lang="hi" aria-checked="false" role="radio">हिंदी</a>
                 </div>
                 
-                <a href="#donate" class="btn btn-donate btn-primary" data-key="btn_donate_now">Donate Now</a>
-            </div>
+                </div>
         </div>
     </header>
 
     <section id="home" class="hero" role="region" aria-labelledby="hero_title">
-        <div class="hero-slideshow">
+        <div class="hero-slideshow" aria-live="polite">
             <div class="hero-slide active" style="background-image: url('MSA/S1.jpg');" role="img" aria-label="Manav Seva Ashram Resident receiving care."></div>
-            <div class="hero-slide" style="background-image: url('MSA/S2.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('MSA/S4.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('MSA/S5.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('MSA/S2.jpg');" role="img" aria-label="Elderly residents eating together."></div>
+            <div class="hero-slide" style="background-image: url('MSA/S4.jpg');" role="img" aria-label="A volunteer comforting an elderly woman."></div>
+            <div class="hero-slide" style="background-image: url('MSA/S5.jpg');" role="img" aria-label="Group photo of ashram residents and staff."></div>
         </div>
 
         <div class="hero-text-content container">
@@ -1447,6 +1470,7 @@ h2 {
                 <div class="mission-values">
                     <p data-key="about_values_p"><strong>Values:</strong> Compassion, Service, Respect, and Humanity.</p>
                 </div>
+                <a href="#founder" class="btn btn-secondary" style="margin-top: 20px;" data-key="btn_read_founder">Read Founder's Story</a>
             </div>
             <div class="intro-image">
                 <img src="MSA/M2.jpg" alt="Volunteer holding hand of abandoned elderly person at Manav Seva Ashram." loading="lazy" width="700" height="466">
@@ -1496,36 +1520,35 @@ h2 {
             </div>
 
             <div class="gallery-grid" id="image-gallery">
-                
                 <div class="gallery-item visible" data-category="meals">
-                    <video controls autoplay loop muted loading="lazy">
+                    <video controls autoplay loop muted playsinline loading="lazy" alt="Residents enjoying daily meals at the ashram.">
                         <source src="MSA/food.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
 
                 <div class="gallery-item visible" data-category="medical">
-                    <video controls autoplay loop muted loading="lazy">
+                    <video controls autoplay loop muted playsinline loading="lazy" alt="Medical assistance being provided to an elderly resident.">
                         <source src="MSA/Medical.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
 
                 <div class="gallery-item visible" data-category="reconnection">
-                    <video controls autoplay loop muted loading="lazy">
+                    <video controls autoplay loop muted playsinline loading="lazy" alt="Emotional family reunion scene at the ashram.">
                         <source src="MSA/Reunions.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
 
                 <div class="gallery-item visible" data-category="reconnection">
-                    <video controls autoplay loop muted loading="lazy">
+                    <video controls autoplay loop muted playsinline loading="lazy" alt="Another successful family reunion video clip.">
                         <source src="MSA/Reunions2.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="gallery-item visible" data-category="lifetime">
-                    <video controls autoplay loop muted loading="lazy">
+                    <video controls autoplay loop muted playsinline loading="lazy" alt="Elderly residents relaxing and socializing.">
                         <source src="MSA/Enjoy.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -1693,7 +1716,7 @@ h2 {
                     <li data-key="join_list2">**Medical Support:** (For doctors/nurses) Health check-ups and medical assistance.</li>
                     <li data-key="join_list3">**Awareness & Admin:** Helping with paperwork and outreach campaigns.</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary" style="display:none;" data-key="btn_start_journey">Start Your Volunteer Journey</a>
+                <a href="https://forms.gle/89zLdztZPt7A6quY6" target="_blank" class="btn btn-secondary" data-key="btn_start_journey">Start Your Volunteer Journey</a>
             </div>
              <div class="volunteer-cta-wrapper">
                 <h3 data-key="volunteer_cta_title">Ready to Volunteer?</h3>
@@ -1796,6 +1819,10 @@ h2 {
         </div>
     </footer>
     
+    <a href="#donate" class="btn btn-primary sticky-donate-btn" aria-label="Donate Now to Manav Seva Ashram">
+        <i class="fas fa-heart" aria-hidden="true"></i> Donate
+    </a>
+
     <div class="floating-contact-box" role="toolbar" aria-label="Quick Contact Links">
         
         <a href="https://www.instagram.com/jigar_rawal77?igsh=bW1tNWJrb2E1dnR6" class="contact-icon-link icon-instagram" target="_blank" aria-label="Visit our Instagram Page">
@@ -1862,6 +1889,8 @@ h2 {
                 founder_word: '“एक समाज का सच्चा माप यह है कि वह अपने सबसे कमजोर लोगों—अपने बच्चों और अपने बुजुर्गों—के साथ कैसा व्यवहार करता है। यहाँ, हर व्यक्ति ईश्वर का एक जीता-जागता स्वरूप (प्रभुजी) है। हमारा कर्तव्य सिर्फ आश्रय प्रदान करना नहीं है, बल्कि उस सम्मान और उद्देश्य को बहाल करना है जो समाज ने उनसे छीन लिया। मेरा संकल्प यह सुनिश्चित करना है कि कोई भी बेसहारा आत्मा फिर कभी अकेली न चले।”',
                 founder_signature: 'श्री जिगर रावल',
                 nav_founder_footer: 'संस्थापक',
+                btn_read_founder: 'संस्थापक की कहानी पढ़ें', // ENHANCEMENT 2
+
                 
                 // NEW PROJECT SECTION TRANSLATIONS
                 nav_projects: 'परियोजनाएं',
@@ -1900,6 +1929,7 @@ h2 {
                 stat3_label: 'परिवारों का पुनर्मिलन',
 
                 // Gallery Filter Translations
+                gallery_title: 'हमारी सेवा की झलक: आश्रम में जीवन', // ENHANCEMENT 2
                 gallery_filter_all: 'सभी दिखाएँ',
                 gallery_filter_meals: 'दैनिक भोजन',
                 gallery_filter_medical: 'चिकित्सा सहायता',
@@ -1912,7 +1942,7 @@ h2 {
                 nav_stories: 'कहानियाँ',
                 nav_join: 'जुड़ें',
                 nav_contact: 'संपर्क',
-                btn_donate_now: 'अभी दान करें',
+                // REMOVED: btn_donate_now: 'अभी दान करें',
                 
                 // Hero Section
                 hero_title: 'जहाँ हर जीवन सम्मान और प्रेम का हकदार है',
@@ -1981,7 +2011,7 @@ h2 {
                 // FIX: Updated the Hindi FAQ admission number
                 faq1_a: 'कृपया हमारे <strong>आपातकालीन/प्रवेश हेल्पलाइन</strong> पर [+91 9602863972] कॉल करें। हमारी टीम आपको प्रारंभिक स्क्रीनिंग और दस्तावेज़ीकरण प्रक्रिया के माध्यम से मार्गदर्शन करेगी। प्रवेश सख्ती से आवश्यकता और वर्तमान उपलब्धता पर आधारित है।',
                 faq2_q: 'क्या आश्रम देखभाल के लिए कोई शुल्क लेता है?',
-                faq2_a: 'नहीं। भोजन, आश्रय, चिकित्सा देखभाल और कपड़े सहित सभी सेवाएँ हर निवासी को <strong>पूरी तरह से निःशुल्क</strong> प्रदान की जाती हैं।',
+                faq2_a: 'नहीं। भोजन, आश्रय, चिकित्सा देखभाल और कपड़े सहित सभी सेवाएँ हर निवासी को <strong>पूरी तरह से निःशुल्क</strong> प्रदान की जाती है।',
                 // SEO UPDATE: New FAQ translation (Hindi)
                 faq4_q: 'मानव सेवा आश्रम कहाँ स्थित है (सिरोही/आबू रोड)?',
                 faq4_a: 'मानव सेवा आश्रम राजस्थान के सिरोही जिले में आबू रोड के पास **स्वरूपगंज** में स्थित है (अक्सर सरूपगंज के रूप में खोजा जाता है)। हमारा मुख्य मिशन स्थानीय और क्षेत्रीय बेसहारा बुजुर्गों की सेवा पर केंद्रित है।',
@@ -2033,20 +2063,17 @@ h2 {
             });
         }
         
+        // ENHANCEMENT 3: Cleaned up and modernized the updateContent function
         function updateContent(lang) {
             const body = document.body;
             body.setAttribute('data-lang', lang);
 
             const elements = document.querySelectorAll('[data-key]');
+            const langData = translations[lang];
+
             elements.forEach(element => {
                 const key = element.getAttribute('data-key');
-                let newText = '';
-
-                if (lang === 'hi' && translations.hi[key]) {
-                    newText = translations.hi[key];
-                } else if (lang === 'en' && originalTexts[key]) {
-                    newText = originalTexts[key];
-                }
+                let newText = (lang === 'en' && originalTexts[key]) ? originalTexts[key] : (langData && langData[key]);
                 
                 if (newText) {
                     element.innerHTML = newText;
@@ -2061,7 +2088,6 @@ h2 {
                 l.setAttribute('aria-checked', isActive ? 'true' : 'false');
             });
             
-            // **NEW: Persist language choice**
             localStorage.setItem('msa_lang_pref', lang);
         }
         
@@ -2094,18 +2120,16 @@ h2 {
         function animateCounter(element, start, end, duration) {
             let current = start;
             const range = end - start;
-            const step = Math.ceil(range / (duration / 10)); 
+            const increment = range / (duration / 10); // Calculate increment based on a 10ms interval
             
             const timer = setInterval(() => {
-                current += step; 
-                if (current > end) {
+                current += increment; 
+                if (current >= end) {
                     current = end;
-                }
-                // Use the correct locale for number formatting
-                element.textContent = current.toLocaleString('en-IN'); 
-                if (current === end) {
                     clearInterval(timer);
                 }
+                // Use Math.floor to ensure integer values during counting for large numbers
+                element.textContent = Math.floor(current).toLocaleString('en-IN'); 
             }, 10); 
         }
 
@@ -2124,12 +2148,8 @@ h2 {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !hasAnimated) {
                         statNumbers.forEach(stat => {
-                            // Ensure the target number for meals served is correct for animation
                             let target = parseInt(stat.getAttribute('data-target'));
-                            if (stat.id === 'stat2') {
-                                target = 150000; 
-                            }
-                            animateCounter(stat, 0, target, 2000); 
+                            animateCounter(stat, 0, target, 2000); // ENHANCEMENT 3: Using cleaned-up animation function
                         });
                         hasAnimated = true;
                         observer.unobserve(statSection); 
@@ -2169,7 +2189,7 @@ h2 {
             });
         }
 
-        // 4. Pseudo-Parallax Footer Effect
+        // 4. Pseudo-Parallax Footer Effect (Minor cleanup)
         function initFooterParallax() {
             if (!mainFooter) return;
 
@@ -2178,18 +2198,20 @@ h2 {
                 const footerOffsetTop = mainFooter.offsetTop;
                 const windowHeight = window.innerHeight;
 
-                // Only start moving the footer when it approaches the viewport
-                if (scrollPosition + windowHeight > footerOffsetTop) {
-                    const diff = scrollPosition + windowHeight - footerOffsetTop;
-                    // Adjust the multiplier (0.1) to control the movement speed
-                    mainFooter.style.transform = `translateY(-${diff * 0.1}px)`;
-                } else {
-                    mainFooter.style.transform = 'translateY(0)';
-                }
-            });
+                // Use a requestAnimationFrame loop for smoother updates (ENHANCEMENT 3)
+                requestAnimationFrame(() => {
+                    if (scrollPosition + windowHeight > footerOffsetTop) {
+                        const diff = scrollPosition + windowHeight - footerOffsetTop;
+                        // Adjust the multiplier (0.1) to control the movement speed
+                        mainFooter.style.transform = `translateY(-${diff * 0.1}px)`;
+                    } else {
+                        mainFooter.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { passive: true }); // ENHANCEMENT 3: Use passive listener for performance
         }
         
-        // 5. NEW: First Visit Welcome Modal
+        // 5. First Visit Welcome Modal
         function initWelcomeModal() {
             const modalBackdrop = document.getElementById('welcome-modal-backdrop');
             const closeBtn = document.getElementById('modal-close-btn');
@@ -2198,7 +2220,6 @@ h2 {
 
             if (!modalBackdrop) return; 
 
-            // Use 'msa_session_visited' to show once per session, regardless of language preference
             const hasSessionVisited = sessionStorage.getItem('msa_session_visited');
 
             function closeModal() {
@@ -2206,13 +2227,11 @@ h2 {
                 document.body.style.overflow = ''; // Restore scrolling
             }
 
-            // Only show modal on the first session visit
             if (!hasSessionVisited) {
-                // Open modal after a short delay for better loading experience
                 setTimeout(() => {
                     modalBackdrop.classList.add('is-open');
-                    document.body.style.overflow = 'hidden'; // Disable background scrolling
-                    sessionStorage.setItem('msa_session_visited', 'true'); // Mark as visited for this session
+                    document.body.style.overflow = 'hidden'; 
+                    sessionStorage.setItem('msa_session_visited', 'true'); 
                 }, 500); 
 
                 // Event Listeners for closing
@@ -2220,10 +2239,7 @@ h2 {
                 continueBtn.addEventListener('click', closeModal);
                 
                 // Close modal and navigate on donate button click
-                donateBtn.addEventListener('click', () => {
-                    closeModal();
-                    // Let the default link behavior navigate to the section
-                });
+                donateBtn.addEventListener('click', closeModal);
 
                 // Close when pressing the escape key
                 document.addEventListener('keydown', (e) => {
@@ -2234,15 +2250,16 @@ h2 {
             }
         }
         
-        // 6. Gallery Filter Logic (FIXED & UPDATED FOR VIDEO)
+        // 6. Gallery Filter Logic 
         function initGalleryFilters() {
             const filterButtons = document.querySelectorAll('.gallery-btn');
             const galleryItems = document.querySelectorAll('.gallery-item');
+            const gallery = document.getElementById('image-gallery');
 
             // Apply 'all' filter initially to ensure all images/videos start visible
             galleryItems.forEach(item => {
                 item.classList.add('visible');
-                item.style.display = 'block'; // Ensure they start in the layout
+                item.style.display = 'block'; 
             });
 
             filterButtons.forEach(button => {
@@ -2252,52 +2269,57 @@ h2 {
                     e.currentTarget.classList.add('active');
 
                     const filter = e.currentTarget.getAttribute('data-filter');
+                    
+                    // Create a fragment to optimize DOM manipulation (ENHANCEMENT 3)
+                    const fragment = document.createDocumentFragment();
+                    const visibleItems = [];
 
                     galleryItems.forEach(item => {
                         const category = item.getAttribute('data-category');
-                        
-                        // Handle video pause/play on filter change
                         const videoElement = item.querySelector('video');
-                        
-                        if (filter === 'all' || category === filter) {
-                            // Item should be visible
-                            // 1. Restore it to the layout flow
-                            item.style.display = 'block'; 
-                            // 2. Schedule the fade-in transition
-                            setTimeout(() => {
-                                item.classList.add('visible');
-                                if (videoElement) {
-                                    // Only attempt to play if video is visible after transition
-                                    videoElement.play().catch(error => {
-                                        // Catch common errors (e.g., autoplay blocked)
-                                        console.log('Video play prevented:', error);
-                                    }); 
-                                }
-                            }, 10); 
+                        const shouldBeVisible = filter === 'all' || category === filter;
+
+                        if (shouldBeVisible) {
+                            item.style.display = 'block';
+                            item.classList.add('visible');
+                            visibleItems.push(item);
+                            fragment.appendChild(item); // Add to fragment for re-ordering (optional: not implemented)
+                            
+                            // Immediately try to play a visible video
+                            if (videoElement) {
+                                videoElement.play().catch(error => {
+                                    console.log('Video play prevented:', error);
+                                }); 
+                            }
+
                         } else {
-                            // Item should be hidden
-                            // 1. Pause video before hiding
+                            item.classList.remove('visible');
+                            
+                            // Pause video before hiding
                             if (videoElement) {
                                 videoElement.pause(); 
                             }
-                            // 2. Start the fade-out transition
-                            item.classList.remove('visible');
-                            // 3. Once transition is complete, remove it from the layout flow
-                            //    (CSS transition is 0.5s)
-                            setTimeout(() => {
-                                // Check if the filter hasn't changed back to 'all' or another matching category during the delay
-                                const currentFilter = document.querySelector('.gallery-btn.active').getAttribute('data-filter');
-                                if (currentFilter !== 'all' && item.getAttribute('data-category') !== currentFilter) {
-                                     item.style.display = 'none'; // This is the key fix for the space issue
+
+                            // Use transition end listener for graceful hide (ENHANCEMENT 3)
+                            item.addEventListener('transitionend', function handler() {
+                                if (!item.classList.contains('visible')) {
+                                    item.style.display = 'none'; 
                                 }
-                            }, 500); 
+                                item.removeEventListener('transitionend', handler);
+                            });
                         }
                     });
+                    
+                    // Re-append to the gallery to ensure order remains logical (ENHANCEMENT 3)
+                    // This handles cases where items are re-ordered, though the grid layout minimizes need.
+                    // For now, simply forcing a reflow often helps.
+                    gallery.appendChild(fragment); 
+
                 });
             });
         }
         
-        // 7. NEW: Mobile Navigation Toggle Logic
+        // 7. Mobile Navigation Toggle Logic
         function initMobileNav() {
             const toggleButton = document.getElementById('menu-toggle');
             const navLinks = document.getElementById('main-nav-links');
@@ -2306,16 +2328,16 @@ h2 {
 
             if (!toggleButton || !navLinks) return;
 
-            // Function to toggle menu state
-            function toggleMenu() {
-                const isOpen = navLinks.classList.toggle('is-open');
+            function toggleMenu(isOpenOverride = null) {
+                const isOpen = isOpenOverride === null ? !navLinks.classList.contains('is-open') : isOpenOverride;
+
+                navLinks.classList.toggle('is-open', isOpen);
                 
                 // Update button icons and ARIA attributes
                 faBars.style.display = isOpen ? 'none' : 'inline-block';
                 faTimes.style.display = isOpen ? 'inline-block' : 'none';
                 toggleButton.setAttribute('aria-expanded', isOpen);
                 
-                // Prevent body scroll when menu is open on mobile
                 document.body.style.overflow = isOpen && window.innerWidth < 992 ? 'hidden' : '';
             }
 
@@ -2325,9 +2347,8 @@ h2 {
             // Close menu when a link inside is clicked (for smoother navigation on mobile)
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
-                    // Only auto-close on mobile screen sizes
                     if (window.innerWidth < 992) {
-                        toggleMenu(); 
+                        toggleMenu(false); // Force close
                     }
                 });
             });
@@ -2335,11 +2356,7 @@ h2 {
             // Handle window resize: ensure desktop view resets properly
             window.addEventListener('resize', () => {
                 if (window.innerWidth >= 992 && navLinks.classList.contains('is-open')) {
-                    navLinks.classList.remove('is-open');
-                    faBars.style.display = 'inline-block';
-                    faTimes.style.display = 'none';
-                    toggleButton.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
+                    toggleMenu(false); // Force close
                 }
             });
 
@@ -2358,7 +2375,7 @@ h2 {
             
             // 2. Initialize Language Switch
             const langLinks = document.querySelectorAll('.lang-link');
-            const storedLang = localStorage.getItem('msa_lang_pref') || 'en'; // **NEW: Retrieve stored language**
+            const storedLang = localStorage.getItem('msa_lang_pref') || 'en'; 
 
             langLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
@@ -2380,7 +2397,7 @@ h2 {
             initAccordion();
             initFooterParallax(); 
             initGalleryFilters(); 
-            initMobileNav(); // **NEW: Initialize mobile navigation**
+            initMobileNav(); 
             
             // 5. Initialize Welcome Modal
             initWelcomeModal();
