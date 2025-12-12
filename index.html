@@ -275,28 +275,39 @@ h2 {
 /* --- END: UPDATED FLOATING CONTACT BOX STYLES --- */
 
 
-/* HEADER & NAV - FIX: Uses the explicit active light color which is White */
+/* HEADER & NAV - MODIFIED FOR PILL SHAPE */
 .main-header {
-    background: var(--color-background-light-active); 
-    padding: 18px 0;
-    box-shadow: 0 1px 4px var(--color-shadow);
+    background: transparent; /* Make the main header wrapper transparent */
+    padding: 15px 0 0; /* Reduced top padding to shift the pill container up */
     position: sticky;
     top: 0;
     z-index: 1000;
+    /* Remove box-shadow */
 }
 
+/* NEW: The Pill Container for the entire nav bar */
 .nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap; 
+    
+    /* ADDED PILL STYLES */
+    background: var(--color-background-light-active); /* Solid White Background */
+    padding: 15px 30px; /* Internal padding for height and spacing */
+    border-radius: 50px; /* Extreme border-radius for the pill shape */
+    max-width: 1200px; /* Constrain the container width */
+    margin: 0 auto 15px; /* Center the pill and reduced bottom margin */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Stronger shadow for lift */
+    transition: all 0.3s ease; /* Ensure smooth transitions */
+    width: 95%; 
 }
 
 /* **UPDATED LOGO STYLING** */
 .logo-img-wrapper {
     display: flex; 
     align-items: center;
-    height: 50px; 
+    height: 45px; /* Slightly smaller height to fit the pill padding */
     text-decoration: none; 
     color: var(--color-text-dark); 
 }
@@ -318,21 +329,21 @@ h2 {
 
 
 .main-nav {
-    margin-left: 40px; 
+    margin-left: 20px; /* Adjusted margin */
     margin-right: auto; 
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .main-nav a {
-    margin-left: 30px;
-    color: var(--color-text-gray);
+    margin-left: 20px; /* Adjusted margin */
+    color: var(--color-text-dark);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .main-nav a:hover {
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 /* NEW: Functional Group Styling (Desktop) */
@@ -341,41 +352,16 @@ h2 {
     align-items: center;
 }
 
-/* Language Selector Styles - NEW POSITIONING */
+/* Language Selector Styles - REMOVED HINDI */
 .language-selector {
-    display: flex; 
-    align-items: center;
-    font-size: 0.95rem;
-    margin-left: 20px; 
-    margin-right: 15px; 
-}
-
-.lang-link {
-    text-decoration: none;
-    color: var(--color-text-gray);
-    font-weight: 500;
-    padding: 2px 5px;
-    transition: color 0.2s, font-weight 0.2s;
-}
-
-.lang-separator {
-    color: var(--color-text-gray);
-    opacity: 0.5;
-    margin: 0 2px;
-}
-
-.lang-link:hover {
-    color: var(--color-primary);
-}
-
-.lang-link.active {
-    color: var(--color-primary);
-    font-weight: 700;
+    /* Hide the entire language selector element */
+    display: none;
 }
 
 /* NEW: Mobile Hamburger Menu Button */
 .menu-toggle {
-    display: none; /* Hide by default on desktop */
+    /* Hide by default on desktop, but keep the definition */
+    display: none; 
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -388,7 +374,7 @@ h2 {
 }
 
 
-/* HERO SECTION WITH SLIDESHOW (UPDATED) */
+/* HERO SECTION WITH SLIDESHOW (UPDATED for Floating Header) */
 .hero {
     position: relative; 
     background-color: var(--color-primary); /* Fallback BG color */
@@ -399,6 +385,9 @@ h2 {
     display: flex; 
     align-items: center; 
     justify-content: center; 
+    
+    /* === THE FIX: Pull the whole section up behind the sticky header === */
+    margin-top: -120px; 
 }
 
 .hero-slideshow {
@@ -433,7 +422,8 @@ h2 {
     z-index: 10; 
     color: var(--color-white);
     max-width: 900px;
-    margin: 0 auto;
+    /* === THE FIX: Push the content down past where the header floats === */
+    margin: 120px auto 0; 
 }
 
 .hero-content .sub-headline {
@@ -1170,7 +1160,14 @@ h2 {
 
     h1 { font-size: 3rem; }
     h2 { font-size: 2.2rem; }
-    .hero { padding: 140px 0; }
+    /* Adjusted Hero Padding on Mobile/Tablet */
+    .hero { 
+        padding: 140px 0; 
+        margin-top: -100px; /* Adjust negative margin for smaller screen */
+    } 
+    .hero-text-content {
+        margin: 100px auto 0; /* Adjust internal margin for smaller screen */
+    }
 
     .footer-content {
         flex-direction: column;
@@ -1198,6 +1195,16 @@ h2 {
     }
     
     /* MOBILE HEADER FIX: 992px */
+    .nav-bar {
+        padding: 10px 20px; 
+        margin: 0 auto 20px;
+        border-radius: 30px; /* Slightly less rounded on small screens */
+    }
+    
+    .main-header {
+        padding: 15px 0 0; /* Reduced top padding on mobile */
+    }
+
     .main-nav {
         /* Hide main nav links on tablets/large phones for a cleaner top bar */
         /* To be overridden by JS for mobile menu */
@@ -1229,6 +1236,9 @@ h2 {
         flex-wrap: wrap;
         /* Ensure key elements are spaced out by stretching the container */
         justify-content: space-between;
+        
+        /* Mobile adjustment for smaller pill height */
+        padding: 8px 15px; 
     }
     
     .logo-img-wrapper {
@@ -1243,50 +1253,59 @@ h2 {
     /* Functional Group Styling for Mobile */
     .header-functional-group {
         order: 2; /* Keep functional group next (right) */
-        margin-left: auto; /* Push group to the right */
+        /* Use order to arrange elements within the group on mobile */
         display: flex;
         align-items: center;
         gap: 8px; /* Reduce gap between elements on mobile */
+        margin-left: auto; 
     }
 
     .language-selector {
-        margin-left: 0;
-        margin-right: 0; 
+        /* Hide language selector entirely on mobile */
+        display: none;
     }
     
     .btn-donate {
+        /* Move donate button to the center-right of the functional group */
+        order: 2; 
         margin-top: 0;
-        /* Reduce padding slightly for a tighter mobile fit */
-        padding: 10px 18px; 
-        font-size: 1rem;
+        padding: 8px 14px; /* Reduced button padding */
+        font-size: 0.9rem;
+    }
+
+    .menu-toggle {
+        /* HIDE HAMBURGER ICON ON MOBILE VIEW */
+        display: none;
     }
     
-    /* MOBILE NAVIGATION STYLES */
+    /* MOBILE NAVIGATION STYLES - Need adjustment for the new .nav-bar container */
     .main-nav {
-        /* Full width and stack underneath the header bar when open */
+        /* On mobile open, it must break out of the pill wrapper to span full width */
         order: 3;
         width: 100%;
         margin-top: 10px;
-        margin-left: 0;
-        margin-right: 0;
+        /* Calculate negative margin based on .nav-bar horizontal padding (15px * 2 = 30px removed from the container size) */
+        margin-left: -15px; 
+        margin-right: -15px;
         background-color: var(--color-background-light-active);
-        padding: 10px 0;
+        padding: 10px 15px; /* Padding matches the original .nav-bar padding */
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05);
+        border-radius: 0 0 30px 30px; /* Round only the bottom edges when expanded */
         
         /* Initial state: Hidden off-screen/compact */
-        display: flex;
-        flex-direction: column;
-        height: 0;
-        overflow: hidden;
+        /* Since the toggle is removed, this navigation functionality is essentially disabled,
+           but the CSS needs to maintain the display: none default from above (992px media query). 
+           We rely on the display: none set at 992px to hide it completely when the screen is small. */
     }
 
     .main-nav.is-open {
-        height: auto; /* Allow height to expand */
-        padding: 15px 0;
+        /* If the toggle was active, this would expand it. Keeping it for safety/future use. */
+        height: auto; 
+        padding: 15px 30px;
     }
     
     .main-nav a {
-        margin: 8px 20px;
+        margin: 8px 0; /* Remove horizontal margin */
         font-size: 1.1rem;
         padding: 5px 0;
         border-bottom: 1px solid var(--color-background-alt);
@@ -1393,11 +1412,6 @@ h2 {
                 <span class="logo-text">Manav Seva Ashram</span>
             </a>
             
-            <button class="menu-toggle" id="menu-toggle" aria-controls="main-nav-links" aria-expanded="false" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars" aria-hidden="true"></i>
-                <i class="fas fa-times" aria-hidden="true"></i>
-            </button>
-
             <nav class="main-nav" id="main-nav-links" role="navigation" aria-label="Main Navigation">
                 <a href="#about" data-key="nav_about">About</a>
                 <a href="#impact" data-key="nav_impact">Impact</a>
@@ -1408,12 +1422,6 @@ h2 {
             </nav>
             
             <div class="header-functional-group">
-                <div class="language-selector" role="radiogroup" aria-label="Language Selector">
-                    <a href="#" class="lang-link active" data-lang="en" aria-checked="true" role="radio">EN</a>
-                    <span class="lang-separator">|</span>
-                    <a href="#" class="lang-link" data-lang="hi" aria-checked="false" role="radio">हिंदी</a>
-                </div>
-                
                 <a href="#donate" class="btn btn-donate btn-primary" data-key="btn_donate_now">Donate Now</a>
             </div>
         </div>
@@ -1840,177 +1848,10 @@ h2 {
         const slides = document.querySelectorAll('.hero-slide');
         const mainFooter = document.querySelector('.main-footer');
         
-        // --- Translation Data (Retained + Modal Content) ---
-        const translations = {
-            hi: {
-                // NEW MODAL TRANSLATIONS
-                modal_title: 'आप हमारी पहली आशा हैं।',
-                modal_p1: 'मानव सेवा आश्रम बेसहारा बुजुर्गों और मानसिक रूप से चुनौतीपूर्ण व्यक्तियों को <strong>मुफ्त, आजीवन आश्रय, भोजन और देखभाल</strong> प्रदान करता है।',
-                modal_p2: 'यदि आपको तत्काल सहायता की आवश्यकता वाला कोई खोया हुआ या बेसहारा वरिष्ठ व्यक्ति मिले, तो कृपया हमारी 24/7 हेल्पलाइन पर संपर्क करें।',
-                modal_helpline: 'आपातकालीन हेल्पलाइन: <a href="tel:+919602863972">+91 96028 63972</a>',
-                modal_btn_donate: 'आज ही एक जीवन को सहारा दें (दान करें)',
-                modal_btn_continue: 'वेबसाइट पर जारी रखें',
-
-                // Founder Section
-                nav_founder: 'संस्थापक',
-                // SEO UPDATE: Hindi translation for founder title
-                founder_title: 'संस्थापक, **जिगर रावल**: मानव सेवा आश्रम, स्वरूपगंज के संस्थापक से मिलें',
-                founder_subheading: 'हमारा मार्गदर्शक सिद्धांत',
-                founder_quote_title: 'हृदय से एक शब्द',
-                // SEO UPDATE: Hindi translation for founder name
-                founder_name: 'श्री जिगर रावल, संस्थापक, मानव सेवा आश्रम',
-                founder_word: '“एक समाज का सच्चा माप यह है कि वह अपने सबसे कमजोर लोगों—अपने बच्चों और अपने बुजुर्गों—के साथ कैसा व्यवहार करता है। यहाँ, हर व्यक्ति ईश्वर का एक जीता-जागता स्वरूप (प्रभुजी) है। हमारा कर्तव्य सिर्फ आश्रय प्रदान करना नहीं है, बल्कि उस सम्मान और उद्देश्य को बहाल करना है जो समाज ने उनसे छीन लिया। मेरा संकल्प यह सुनिश्चित करना है कि कोई भी बेसहारा आत्मा फिर कभी अकेली न चले।”',
-                founder_signature: 'श्री जिगर रावल',
-                nav_founder_footer: 'संस्थापक',
-                
-                // NEW PROJECT SECTION TRANSLATIONS
-                nav_projects: 'परियोजनाएं',
-                nav_projects_footer: 'परियोजनाएं',
-
-                projects_title: 'हमारे वर्तमान परियोजनाएँ और निर्माण अभियान',
-                projects_subtitle: 'अधिक बेसहारा बुजुर्गों के लिए एक बड़ा, सुरक्षित और बेहतर घर बनाना।',
-
-                project1_title: 'मानव सेवा आश्रम निर्माण (चरण I)',
-                project1_status: 'स्थिति: प्रगति पर',
-                project1_summary: 'हमारे साथ <strong>आश्रम निर्माण</strong> की पवित्र सेवा में शामिल हों। और अधिक प्रभुजी (बेसहारा बुजुर्गों) को समायोजित करने और उन्हें उचित चिकित्सा व रहने की सुविधाएँ प्रदान करने के लिए, हम स्वरूपगंज में एक नई विंग का निर्माण कर रहे हैं।',
-                project1_material_heading: 'अत्यावश्यक सामग्री आवश्यकताएँ',
-                project_btn_donate: 'इस परियोजना का समर्थन करें',
-
-                material_col1: 'सामग्री',
-                material_col2: 'आवश्यक मात्रा',
-                material_sand: 'बजरी (Sand)',
-                material_cement: 'सीमेन्ट (Cement)',
-                material_bricks: 'ईंट (Bricks)',
-                material_stone: 'पत्थर (Stone)',
-                material_concrete: 'कंकरीट (Concrete)',
-                material_rebar: 'सरीया (Rebar)',
-
-                project_cta_title: 'निर्माण सामग्री दान करना चाहते हैं?',
-                project_cta_p: 'यदि आप सीधे सामग्री दान करना चाहते हैं, तो पिकअप/डिलीवरी समन्वय के लिए हमारी टीम से संपर्क करें।',
-                project_btn_contact: 'जिगर रावल को कॉल करें (9602863972)',
-
-                // Footer Widget
-                footer_helpline_widget: 'आपातकालीन हेल्पलाइन: <a href="tel:+919602863972">+91 96028 63972</a> | ईमेल: <a href="mailto:info@manavsevaashram.org">info@manavsevaashram.org</a>',
-
-
-                // New Stats Translations
-                stats_title: 'संख्याओं में हमारा मिशन',
-                stat1_label: 'वर्तमान में देखभाल में जीवन',
-                stat2_label: 'सालाना परोसे जाने वाले भोजन',
-                stat3_label: 'परिवारों का पुनर्मिलन',
-
-                // Gallery Filter Translations
-                gallery_filter_all: 'सभी दिखाएँ',
-                gallery_filter_meals: 'दैनिक भोजन',
-                gallery_filter_medical: 'चिकित्सा सहायता',
-                gallery_filter_reconnection: 'पुनर्मिलन',
-                gallery_filter_lifetime: 'आजीवन देखभाल',
-                
-                // Header/Navigation
-                nav_about: 'हमारे बारे में',
-                nav_impact: 'प्रभाव',
-                nav_stories: 'कहानियाँ',
-                nav_join: 'जुड़ें',
-                nav_contact: 'संपर्क',
-                btn_donate_now: 'अभी दान करें',
-                
-                // Hero Section
-                hero_title: 'जहाँ हर जीवन सम्मान और प्रेम का हकदार है',
-                // SEO UPDATE: Hindi subtitle includes location
-                hero_subtitle: 'स्वरूपगंज, सिरोही में बुजुर्गों, लापता वरिष्ठों और मानसिक रूप से चुनौतीपूर्ण व्यक्तियों को भोजन, आश्रय और एक स्थायी परिवार प्रदान करना।',
-                btn_donate_life: 'अभी दान करें और जीवन बदलें',
-                btn_whatsapp: 'व्हाट्सएप करें 💬',
-                btn_volunteer: 'स्वयंसेवक बनें',
-
-                // About Section
-                about_subheading: 'हमारा मिशन',
-                about_title: 'बेसहारा बुजुर्गों और मानसिक रूप से चुनौतीपूर्ण लोगों के लिए आश्रय और देखभाल प्रदान करना',
-                // SEO UPDATE: Hindi p1 includes location
-                about_p1: 'मानव सेवा आश्रम (MSA) की यात्रा एक सरल, लेकिन गहन, एहसास के साथ शुरू हुई: हमारे सड़कों पर बेसहारा बुजुर्गों और मानसिक रूप से चुनौतीपूर्ण व्यक्तियों का गहरा अकेलापन और पीड़ा। हम <strong>सम्मान</strong> बहाल करने, <strong>बिना शर्त समर्थन</strong> प्रदान करने, और खोई हुई आत्माओं को उनके परिवारों से फिर से जोड़ने में मदद करने के लिए मौजूद हैं।',
-                about_values_p: '<strong>मूल्य:</strong> करुणा, सेवा, सम्मान, और मानवता।',
-
-                // Impact Section (Services)
-                impact_title: 'हमारा प्रभाव: आजीवन देखभाल, चिकित्सा सहायता, और परिवार से पुनर्मिलन सेवाएँ',
-                service1_title: 'दैनिक भोजन और पोषण',
-                service1_p: 'हम प्रतिदिन तीन ताज़ा, स्वच्छ और संतुलित भोजन प्रदान करते हैं, यह सुनिश्चित करते हुए कि हर निवासी शारीरिक और आत्मिक रूप से पोषित हो।',
-                service2_title: 'चिकित्सा और मानसिक सहायता',
-                service2_p: 'एक सुरक्षित और सहायक वातावरण में नियमित स्वास्थ्य जाँच, आवश्यक दवाएं, परामर्श, और चिकित्सा प्रदान की जाती है।',
-                service3_title: 'परिवार से पुनर्मिलन',
-                service3_p: 'हमारी समर्पित टीम लापता वरिष्ठों के परिवारों का पता लगाने के लिए अधिकारियों के साथ अथक रूप से काम करती है, पुनर्मिलन की खुशी को सुगम बनाती है।',
-                service4_title: 'आजीवन देखभाल',
-                service4_p: 'जिनके परिवार नहीं हैं, उनके लिए आश्रम उनका स्थायी, प्रेमपूर्ण घर बन जाता है, यह सुनिश्चित करते हुए कि वे अपने शेष वर्ष सम्मान के साथ जिएं।',
-
-                // CTA Donate Section
-                cta_donate_title: 'सहारा बनें। आज ही दान करें।',
-                cta_donate_subtitle: 'आपका 100% योगदान सीधे भोजन, चिकित्सा देखभाल और आजीवन आश्रय प्रदान करने में जाता है।',
-                option_onetime: 'एक बार का दान',
-                option_monthly: 'मासिक समर्थक',
-                option_material: 'सामग्री दान',
-                cta_donate_legal: 'आपका दान [धारा 80G] के तहत कर-मुक्त है।',
-
-                // QR Donation Section (No bank details translations remain)
-                qr_subheading: 'तत्काल समर्थन',
-                qr_title: 'तुरंत स्कैन करें और दान करें',
-                // SEO UPDATE: Hindi p1 includes location
-                qr_p1: 'आप <strong>जो भी दिल से चाहते हैं या आपकी बुद्धि के अनुसार</strong> (<em>मानव सेवा</em>) दान करके हमारा समर्थन कर सकते हैं। हर छोटा योगदान हमें स्वरूपगंज में भोजन, दवा और आश्रय प्रदान करने में मदद करता है।',
-                
-                // Donor Form CTA Block
-                donor_form_title: '80G कर रसीद चाहिए?',
-                donor_form_p1: 'कृपया भुगतान करने के बाद आधिकारिक कर रसीद (80G) ईमेल द्वारा प्राप्त करने के लिए हमारा पुष्टि फॉर्म भरें।',
-                donor_btn_submit: 'रसीद पुष्टि फॉर्म पर जाएं',
-                
-                // Volunteer CTA Block
-                volunteer_cta_title: 'स्वयंसेवा के लिए तैयार हैं?',
-                volunteer_cta_p: 'हमारे परिवार में शामिल होने और बेसहारा बुजुर्गों के जीवन में बदलाव लाना शुरू करने के लिए ऑनलाइन आवेदन करें।',
-                volunteer_btn_submit: 'स्वयंसेवक आवेदन फॉर्म भरें',
-
-
-                // Join Us Section
-                join_subheading: 'हाथ बटाएं',
-                join_title: 'अपना उद्देश्य ढूंढें। स्वयंसेवक बनें।',
-                // SEO UPDATE: Hindi p1 includes location
-                join_p1: 'आपका समय और कौशल अमूल्य हैं। स्वयंसेवकों के हमारे बढ़ते परिवार में शामिल हों और निःस्वार्थ सेवा (<em>सेवा</em>) की गहरी खुशी का अनुभव करें।',
-                join_list1: '<strong>देखभाल:</strong> समय बिताना, पढ़ना, और गतिविधियों में सहायता करना।',
-                join_list2: '<strong>चिकित्सा सहायता:</strong> (डॉक्टरों/नर्सों के लिए) स्वास्थ्य जाँच और चिकित्सा सहायता।',
-                join_list3: '<strong>जागरूकता और व्यवस्थापन:</strong> कागजी कार्रवाई और आउटरीच अभियानों में मदद करना।',
-                btn_start_journey: 'अपनी स्वयंसेवा यात्रा शुरू करें',
-
-                // FAQ Section
-                faq_title: 'सामान्य प्रश्न (FAQ)',
-                faq1_q: 'मैं आश्रम में किसी को कैसे भर्ती करा सकता हूँ?',
-                // FIX: Updated the Hindi FAQ admission number
-                faq1_a: 'कृपया हमारे <strong>आपातकालीन/प्रवेश हेल्पलाइन</strong> पर [+91 9602863972] कॉल करें। हमारी टीम आपको प्रारंभिक स्क्रीनिंग और दस्तावेज़ीकरण प्रक्रिया के माध्यम से मार्गदर्शन करेगी। प्रवेश सख्ती से आवश्यकता और वर्तमान उपलब्धता पर आधारित है।',
-                faq2_q: 'क्या आश्रम देखभाल के लिए कोई शुल्क लेता है?',
-                faq2_a: 'नहीं। भोजन, आश्रय, चिकित्सा देखभाल और कपड़े सहित सभी सेवाएँ हर निवासी को <strong>पूरी तरह से निःशुल्क</strong> प्रदान की जाती हैं।',
-                // SEO UPDATE: New FAQ translation (Hindi)
-                faq4_q: 'मानव सेवा आश्रम कहाँ स्थित है (सिरोही/आबू रोड)?',
-                faq4_a: 'मानव सेवा आश्रम राजस्थान के सिरोही जिले में आबू रोड के पास **स्वरूपगंज** में स्थित है (अक्सर सरूपगंज के रूप में खोजा जाता है)। हमारा मुख्य मिशन स्थानीय और क्षेत्रीय बेसहारा बुजुर्गों की सेवा पर केंद्रित है।',
-                faq3_q: 'मैं यह कैसे सुनिश्चित कर सकता हूँ कि मेरे दान का उपयोग प्रभावी ढंग से किया जाए?',
-                faq3_a: 'मानव सेवा आश्रम पारदर्शिता के लिए प्रतिबद्ध है। आपका 100% दान सीधे हमारे निवासियों की देखभाल (भोजन, दवा, आश्रय रखरखाव) के लिए आवंटित किया जाता है। आप प्रमुख योगदानों के लिए एक ऑडिट रिपोर्ट का अनुरोध कर सकते हैं।',
-
-
-                // Contact Section
-                contact_map_title: 'हमारा स्थान',
-                contact_subheading: 'संपर्क करें',
-                contact_title: 'हम मदद के लिए यहाँ हैं।',
-                // SEO UPDATE: Hindi address includes Sirohi
-                contact_address: '<strong>पता:</strong> मानव सेवा आश्रम, JWQ8+833, सर्विस रोड, **स्वरूपगंज, सिरोही**, राजस्थान 307023',
-                contact_helpline: '<strong>हेल्पलाइन:</strong> <a href="tel:+919602863972">+91 96028 63972</a>',
-                contact_whatsapp: '<strong>व्हाट्सएप:</strong> <a href="https://wa.me/919602863972" target="_blank">+91 96028 63972</a>',
-                contact_email: '<strong>ईमेल:</strong> <a href="mailto:msajigar@gmail.com">msajigar@gmail.com</a>',
-                contact_hours: '<strong>समय:</strong> सोम - शनि, सुबह 10:00 बजे - शाम 5:00 बजे',
-
-                // Footer
-                nav_home_footer: 'होम',
-                nav_about_footer: 'हमारे बारे में',
-                nav_donate_footer: 'दान करें',
-                nav_volunteer_footer: 'स्वयंसेवक',
-                footer_copyright_year: '2025',
-                footer_rights: 'सभी अधिकार सुरक्षित।',
-            }
-        };
-
-        // Original English Text Storage for easy switching back
+        // --- Translation Data (Now English Only) ---
+        const translations = {}; // Empty the translations object
+        
+        // Original English Text Storage
         const originalTexts = {};
 
         // --- Core Functions ---
@@ -2024,7 +1865,7 @@ h2 {
             setTimeout(showSlides, 5000); // Change image every 5 seconds
         }
 
-        // Translation Logic
+        // Translation Logic (Simplified)
         function storeOriginalTexts() {
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(element => {
@@ -2034,35 +1875,17 @@ h2 {
         }
         
         function updateContent(lang) {
+            // Function simplified to ensure English content remains/is restored
             const body = document.body;
-            body.setAttribute('data-lang', lang);
+            body.setAttribute('data-lang', 'en'); 
 
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(element => {
                 const key = element.getAttribute('data-key');
-                let newText = '';
-
-                if (lang === 'hi' && translations.hi[key]) {
-                    newText = translations.hi[key];
-                } else if (lang === 'en' && originalTexts[key]) {
-                    newText = originalTexts[key];
-                }
-                
-                if (newText) {
-                    element.innerHTML = newText;
+                if (originalTexts[key]) {
+                    element.innerHTML = originalTexts[key];
                 }
             });
-
-            // Update ARIA attributes for language links
-            const langLinks = document.querySelectorAll('.lang-link');
-            langLinks.forEach(l => {
-                const isActive = l.getAttribute('data-lang') === lang;
-                l.classList.toggle('active', isActive);
-                l.setAttribute('aria-checked', isActive ? 'true' : 'false');
-            });
-            
-            // **NEW: Persist language choice**
-            localStorage.setItem('msa_lang_pref', lang);
         }
         
         // --- Dynamic Features ---
@@ -2297,56 +2120,15 @@ h2 {
             });
         }
         
-        // 7. NEW: Mobile Navigation Toggle Logic
+        // 7. Mobile Navigation Toggle Logic (REMOVED: Now does nothing since the toggle button is removed)
         function initMobileNav() {
-            const toggleButton = document.getElementById('menu-toggle');
+            // Since the menu toggle is removed, this function is neutralized.
+            // On desktop, the main links are always visible.
+            // On mobile, the main links are always hidden (via CSS @992px) as the toggle button is gone.
             const navLinks = document.getElementById('main-nav-links');
-            const faBars = toggleButton.querySelector('.fa-bars');
-            const faTimes = toggleButton.querySelector('.fa-times');
-
-            if (!toggleButton || !navLinks) return;
-
-            // Function to toggle menu state
-            function toggleMenu() {
-                const isOpen = navLinks.classList.toggle('is-open');
-                
-                // Update button icons and ARIA attributes
-                faBars.style.display = isOpen ? 'none' : 'inline-block';
-                faTimes.style.display = isOpen ? 'inline-block' : 'none';
-                toggleButton.setAttribute('aria-expanded', isOpen);
-                
-                // Prevent body scroll when menu is open on mobile
-                document.body.style.overflow = isOpen && window.innerWidth < 992 ? 'hidden' : '';
-            }
-
-            // Toggle menu on button click
-            toggleButton.addEventListener('click', toggleMenu);
-
-            // Close menu when a link inside is clicked (for smoother navigation on mobile)
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    // Only auto-close on mobile screen sizes
-                    if (window.innerWidth < 992) {
-                        toggleMenu(); 
-                    }
-                });
-            });
-
-            // Handle window resize: ensure desktop view resets properly
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 992 && navLinks.classList.contains('is-open')) {
-                    navLinks.classList.remove('is-open');
-                    faBars.style.display = 'inline-block';
-                    faTimes.style.display = 'none';
-                    toggleButton.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // Initialize the correct icon state
-            if (!navLinks.classList.contains('is-open')) {
-                faBars.style.display = 'inline-block';
-                faTimes.style.display = 'none';
+            if (navLinks && window.innerWidth < 992) {
+                 // In a real-world site, you'd likely want *some* way to access the nav on mobile.
+                 // We keep it hidden as requested by removing the toggle mechanism.
             }
         }
 
@@ -2356,20 +2138,8 @@ h2 {
             // 1. Store the original English texts first
             storeOriginalTexts();
             
-            // 2. Initialize Language Switch
-            const langLinks = document.querySelectorAll('.lang-link');
-            const storedLang = localStorage.getItem('msa_lang_pref') || 'en'; // **NEW: Retrieve stored language**
-
-            langLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault(); 
-                    const newLang = e.target.getAttribute('data-lang');
-                    updateContent(newLang);
-                });
-            });
-            
-            // Set initial content to the stored language (defaults to 'en')
-            updateContent(storedLang); 
+            // 2. Initialize Language Switch (Now just defaults to English)
+            updateContent('en'); 
             
             // 3. Start Slideshow
             showSlides();
@@ -2380,7 +2150,7 @@ h2 {
             initAccordion();
             initFooterParallax(); 
             initGalleryFilters(); 
-            initMobileNav(); // **NEW: Initialize mobile navigation**
+            initMobileNav(); 
             
             // 5. Initialize Welcome Modal
             initWelcomeModal();
