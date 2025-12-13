@@ -13,8 +13,8 @@
     <meta property="og:title" content="Manav Seva Ashram | Serving Dignity and Love to Abandoned Elders">
     <meta property="og:description" content="Manav Seva Ashram (MSA) in Swaroopganj provides lifelong sanctuary, medical support, and family reconnection services for the elderly and mentally challenged. Your support changes lives.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.yourdomain.org/">
-    <meta property="og:image" content="https://www.yourdomain.org/placeholder-social-share-image.jpg">
+    <meta property="og:url" content="https://www.manavsevasharm.netlify.app">
+    <meta property="og:image" content="https://www.manavsevasharm.netlify.app/MSA/M2.jpg">
     <meta property="og:site_name" content="Manav Seva Ashram">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,46 +22,10 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <meta property="og:image" content="image_821180.png">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@YourNgoHandle">
-    <meta name="twitter:creator" content="@YourNgoHandle">
-    <meta name="twitter:title" content="Manav Seva Ashram, Swaroopganj | Reuniting Families & Restoring Dignity (Jigar Rawal)">
-    <meta name="twitter:description" content="An NGO offering free, lifelong care for abandoned elderly and family tracing services in Swaroopganj, Rajasthan. Donate & Volunteer.">
-    <meta name="twitter:image" content="https://www.yourdomain.org/placeholder-social-share-image.jpg">
-    
+      
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "NonprofitOrganization",
-      "name": "Manav Seva Ashram",
-      "alternateName": "MSA",
-      "url": "https://www.yourdomain.org/",
-      "logo": "https://www.yourdomain.org/logo.jpg",
-      "description": "NGO providing lifelong care, food, and shelter for abandoned elderly, missing seniors, and mentally challenged individuals in need in Swaroopganj, Sirohi, Rajasthan. We focus on family reconnection.",
-      "sameAs": [
-        "https://www.facebook.com/ManavSevaAshram",
-        "https://www.twitter.com/ManavSevaAshram"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "JWQ8+833, Service Rd, Swaroopganj, Rajasthan 307023",
-        "addressRegion": "Rajasthan",
-        "postalCode": "307023",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+919602863972",
-        "contactType": "customer service",
-        "email": "info@manavsevaashram.org"
-      }
-    }
-    </script>
     
     <style>
 /* GLOBAL STYLES & RESET - Simplified for Light Theme Only */
@@ -95,7 +59,6 @@ body {
     line-height: 1.7;
     background-color: var(--color-background-main-page); 
     scroll-behavior: smooth;
-    /* Removed transition for theme change */
 }
 
 /* **NEW: Accessibility Focus State** */
@@ -193,55 +156,7 @@ h2 {
     color: var(--color-white);
 }
 
-/* KEYFRAMES for Floating CTA Pulse */
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
-}
-@keyframes pulse-insta {
-    0% {
-        box-shadow: 0 0 0 0 rgba(225, 48, 108, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(225, 48, 108, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(225, 48, 108, 0);
-    }
-}
-
-/* --- START: UPDATED FLOATING CONTACT BOX STYLES (Blurred & Rounded) --- */
-/* The floating-contact-box has been removed from HTML, keeping styles here in case it's added back */
-.floating-contact-box {
-    position: fixed; 
-    bottom: 30px; /* Position from bottom */
-    left: 30px;  /* Position from left */
-    /* Box Styling */
-    background-color: rgba(255, 255, 255, 0.7); /* Lighter, semi-transparent background */
-    
-    /* MODIFICATION 1: Apply Blur (Frosted Glass Effect) */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); /* For Safari support */
-    
-    /* MODIFICATION 2: Increased Border Radius for a rounded/pill shape */
-    border-radius: 50px; /* High radius makes it pill-shaped */
-    
-    padding: 10px 15px; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 10000; 
-    display: flex; 
-    gap: 12px;
-    align-items: center;
-}
-
-/* Styling for individual icons inside the box */
+/* --- Floating Element Base Styles --- */
 .contact-icon-link {
     display: flex;
     justify-content: center;
@@ -259,7 +174,6 @@ h2 {
     transform: scale(1.1);
 }
 
-/* Specific Icon Colors and Styles */
 .icon-whatsapp {
     background-color: #25D366; 
     color: var(--color-white);
@@ -273,10 +187,38 @@ h2 {
     color: var(--color-white);
 }
 
-/* --- END: UPDATED FLOATING CONTACT BOX STYLES --- */
+/* --- START: FLOATING CONTACT BOX STYLES (Group of social/call buttons) --- */
+.floating-contact-box {
+    position: fixed; 
+    bottom: 30px; 
+    left: 30px;  /* Positioned left */
+    background-color: var(--color-background-light-active); 
+    border-radius: 50px; 
+    padding: 10px 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10000; 
+    display: flex; 
+    gap: 12px;
+    align-items: center;
+}
+/* --- END: FLOATING CONTACT BOX STYLES --- */
+
+/* --- START: FLOATING DONATE CTA (Removed) --- */
+/* The entire .floating-donate-cta section and its styles were removed. */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 183, 3, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 183, 3, 0);
+    }
+}
 
 
-/* HEADER & NAV - FIX: Uses the explicit active light color which is White */
+/* HEADER & NAV */
 .main-header {
     background: var(--color-background-light-active); 
     padding: 18px 0;
@@ -318,17 +260,37 @@ h2 {
 }
 
 
-/* MAIN NAVIGATION LINKS (Default: Hidden on Mobile, Shown on Desktop in Media Query) */
+/* MAIN NAVIGATION LINKS: Desktop Default */
 .main-nav {
-    display: none !important; /* Start hidden for mobile-first approach */
-    /* Removed default margin, controlled by media query below */
+    display: flex; /* Always visible for desktop view */
+    opacity: 1;
+    transform: translateY(0);
+    max-height: none;
+    
+    position: static;
+    width: auto;
+    box-shadow: none;
+    padding: 0;
+    border: none;
+    flex-direction: row;
+    align-items: center;
+    
+    /* Push nav group to the right side of the container */
+    margin-left: auto; 
+    margin-right: 0;
 }
 
 .main-nav a {
+    padding: 0;
+    width: auto;
+    border-bottom: none;
     margin-left: 30px;
-    color: var(--color-text-dark); 
-    text-decoration: none;
-    font-weight: 500;
+    text-align: left;
+    
+    color: var(--color-text-dark);
+    font-weight: 500; 
+    position: relative;
+    text-decoration: none; /* Inherited, but good practice */
     transition: color 0.3s;
 }
 
@@ -336,48 +298,38 @@ h2 {
     color: var(--color-primary);
 }
 
-/* NEW: Functional Group Styling (for Mobile Donate Button on left-over structure) */
+/* Desktop Hover Effect for links */
+.main-nav a:not(.btn-primary)::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--color-secondary);
+    transition: width 0.3s ease-out;
+    border-radius: 2px;
+}
+.main-nav a:not(.btn-primary):hover::after {
+    width: 100%;
+}
+
+/* Styling the Donate Button inside the nav - HIDDEN NOW */
+.main-nav .btn-primary { 
+    display: none; /* HIDE DONATE BUTTON IN DESKTOP NAV */
+    margin-left: 40px; 
+    padding: 10px 25px; 
+    font-weight: 700;
+    text-decoration: none; 
+}
+
+/* Mobile/Unused Elements - FORCED HIDE (For cleanup) */
 .header-functional-group {
-    display: flex;
-    align-items: center;
-    /* Hide on desktop, shown on mobile in media query below 992px */
     display: none; 
 }
-
-/* Language Selector Styles - NEW POSITIONING */
-.language-selector {
-    display: flex; 
-    align-items: center;
-    font-size: 0.95rem;
-    margin-left: 20px; 
-    /* Adjust margin since the button is gone */
-    margin-right: 0; 
-}
-
-.lang-link {
-    text-decoration: none;
-    color: var(--color-text-gray);
-    font-weight: 500;
-    padding: 2px 5px;
-    transition: color 0.2s, font-weight 0.2s;
-}
-
-.lang-separator {
-    color: var(--color-text-gray);
-    opacity: 0.5;
-    margin: 0 2px;
-}
-
-.lang-link:hover {
-    color: var(--color-primary);
-}
-
-.lang-link.active {
-    color: var(--color-primary);
-    font-weight: 700;
-}
-
-/* MOBILE TOGGLE: HIDDEN per user request (retaining the class name but forcing hidden) */
+.language-selector { display: none; }
+.lang-link { display: none; }
+.lang-separator { display: none; }
 .menu-toggle {
     display: none !important;
 }
@@ -744,7 +696,6 @@ h2 {
 
 /* 5B. QR Donation Grid Layout */
 .qr-donation-grid {
-    /* Changed to 1fr instead of 1fr 1fr to ensure the remaining block centers/spans */
     display: grid;
     grid-template-columns: 1fr; 
     gap: 60px;
@@ -946,31 +897,7 @@ h2 {
     background-color: var(--color-footer-bg); 
     color: var(--color-footer-text); /* Uses dedicated footer text variable (White) */
     padding: 40px 0;
-    transition: transform 0.1s ease-out, background-color 0.5s; 
 }
-
-/* **NEW: Footer Contact Widget Styling** */
-.footer-contact-widget {
-    margin-top: 30px;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 20px;
-}
-.footer-contact-widget p {
-    margin: 5px 0;
-    font-size: 1rem;
-    /* Using a lighter text for details */
-    color: rgba(255, 255, 255, 0.7); 
-}
-.footer-contact-widget a {
-    color: var(--color-secondary); /* Accent color for links */
-    text-decoration: none;
-    font-weight: 500;
-}
-.footer-contact-widget a:hover {
-    color: var(--color-primary);
-}
-
 
 .footer-content {
     display: flex;
@@ -1125,277 +1052,294 @@ h2 {
 }
 /* === END: POP-UP MODAL STYLES === */
 
-/* === REMOVED STICKY DONATE BUTTON STYLES === */
-
-
-/* MEDIA QUERIES (Responsiveness) */
-
-/* 992px: Tablets/Large Mobile */
-@media (max-width: 992px) {
-    .intro-grid, 
-    .join-grid, 
-    .contact-info-grid, 
-    .founder-grid, /* NEW GRID */
-    .qr-donation-grid { 
-        grid-template-columns: 1fr;
-        gap: 40px;
+/* ==================================================================================== */
+/* MOBILE MEDIA QUERIES (Max Width 768px for Tablets/Phones) */
+/* ==================================================================================== */
+@media (max-width: 768px) {
+    
+    /* Global Adjustments */
+    .section-padding {
+        padding: 50px 0; /* Reduced padding for more compact look */
     }
     
-    .intro-image { 
-        order: -1;
-    } 
-    .founder-words-box {
-        border-left: none;
-        border-top: 5px solid var(--color-secondary);
+    /* Typography Scaling */
+    h1 {
+        font-size: 2.5rem; /* Hero Title reduction */
     }
-    .founder-image-box {
-        order: -1; /* Place image above text on mobile */
+    h2 {
+        font-size: 1.8rem; /* Section Title reduction */
+        margin-bottom: 1em;
+    }
+    .sub-heading {
+        font-size: 1rem;
+    }
+    .section-title {
+        margin-bottom: 1.5em;
     }
 
-    /* Projects Section Mobile Adjustment */
-    .project-content-grid {
+    /* Buttons */
+    .btn {
+        padding: 12px 20px; /* Slightly larger vertical hit area */
+        font-size: 0.95rem;
+    }
+
+
+    /* HEADER & NAV (Mobile Menu Setup) */
+    .main-header {
+        padding: 15px 0;
+    }
+    
+    /* Make the functional group visible (Menu Toggle only) */
+    .header-functional-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    /* HIDE Donate button that was in the functional group */
+    .header-functional-group .btn-primary {
+        display: none; 
+    }
+    
+    /* HIDE Desktop Nav by default */
+    .main-nav {
+        /* Mobile: Hidden off-screen, full-width menu */
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px; /* Height of the header */
+        left: 0;
+        background-color: var(--color-background-light-active);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+        z-index: 999;
+        
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.3s ease, max-height 0.3s ease;
+    }
+
+    /* When the menu is checked/open (simulating with a dummy class for now, ideally JS handles this) */
+    .main-nav.menu-open {
+        display: flex;
+        opacity: 1;
+        max-height: 500px; /* Enough to show all links */
+    }
+
+    .main-nav a {
+        margin: 0;
+        padding: 12px 20px;
+        width: 100%;
+        border-bottom: 1px solid var(--color-background-main-page);
+        text-align: center;
+    }
+    
+    .main-nav a:not(.btn-primary)::after {
+        content: none; /* Remove desktop hover effect */
+    }
+
+    /* The old header donate button is now hidden by .main-nav .btn-primary { display: none; } */
+    
+    /* Display the actual Hamburger menu toggle */
+    .menu-toggle {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--color-primary);
+    }
+    
+
+    /* HERO Section */
+    .hero {
+        padding: 100px 0; /* Reduced vertical padding */
+        min-height: 450px;
+    }
+    .hero-text-content .sub-headline {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+    .hero-ctas {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    .hero-ctas .btn {
+        width: 80%; /* Make buttons full-width */
+        max-width: 300px;
+        margin: 0;
+    }
+    
+
+    /* Grid Layouts - Stack Vertically */
+    .intro-grid,
+    .project-content-grid,
+    .founder-grid,
+    .join-grid,
+    .contact-info-grid {
         grid-template-columns: 1fr;
+        gap: 30px; /* Reduced gap */
     }
-    .project-image-container {
-        order: -1; /* Image on top on mobile */
+    
+    /* Reverse the order of the intro grid */
+    .intro-grid {
+        display: flex;
+        flex-direction: column-reverse;
     }
+    /* Stack founder image above text */
+    .founder-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    /* Intro and Founder */
+    .intro-image {
+        text-align: center;
+    }
+    .mission-values {
+        padding: 15px;
+    }
+    .founder-image-box img {
+        width: 180px; /* Smaller founder image */
+        height: 180px;
+    }
+    .founder-words-box {
+        padding: 20px;
+    }
+
+    /* Projects */
     .project-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
-
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2.2rem; }
-    .hero { padding: 140px 0; }
-
-    .footer-content {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .footer-links a { margin: 0 10px; }
-    
-    /* Centering text/blocks when columns stack */
-    .section-title-left { 
-        text-align: center;
-    }
-    .qr-code-block {
-        text-align: center;
-    }
-    .qr-code-block .sub-heading {
-         text-align: center;
-    }
-    .supporting-line {
-        text-align: center;
-    }
-    .qr-wrapper {
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    /* MOBILE HEADER FIX: 992px */
-    
-    /* Hide the Desktop Navigation on mobile/tablet */
-    .main-nav {
-        display: none !important; 
-    }
-    
-    /* Functional Group (The Donate Button) adjustment for small screen display */
-    .header-functional-group {
-        /* *** MODIFIED: Ensure it is completely hidden and doesn't take space *** */
-        display: none !important; 
-    }
-    
-    .logo-text {
-        font-size: 1.5rem; /* Slightly smaller text on tablets */
-    }
-
-    /* Donor/Volunteer CTA blocks should center on mobile */
-    .form-cta-block, .volunteer-cta-wrapper {
-        max-width: 100%;
-    }
-
-    /* The menu-toggle is now completely hidden. */
-}
-
-/* Override the mobile hiding of the functional group ONLY for desktop/large screens */
-@media (min-width: 993px) {
-    /* Desktop Navigation Styling */
-    .main-nav {
-        display: flex !important; /* Show the full navigation bar */
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-        max-height: none !important;
-        
-        position: static !important;
-        width: auto !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        border: none !important;
-        flex-direction: row;
-        align-items: center;
-        
-        /* Redesign: Push links to the right, next to the logo */
-        margin-left: auto; /* Push nav group to the right side of the container */
-        margin-right: 0;
-    }
-    
-    /* Hide the mobile-focused donate button container */
-    .header-functional-group {
-        display: none;
-    }
-    .main-nav a {
-        padding: 0;
-        width: auto;
-        border-bottom: none;
-        margin-left: 30px;
-        text-align: left;
-        
-        /* Desktop link style enhancements */
-        color: var(--color-text-dark);
-        font-weight: 500; /* Medium weight */
-        position: relative;
-    }
-    
-    /* Desktop Hover Effect for links */
-    .main-nav a:not(.btn-primary)::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background-color: var(--color-secondary);
-        transition: width 0.3s ease-out;
-        border-radius: 2px;
-    }
-    .main-nav a:not(.btn-primary):hover::after {
-        width: 100%;
-    }
-    
-    /* Styling the Donate Button inside the nav */
-    .main-nav .btn-primary { 
-        margin-left: 40px; /* Separates it from the last link (Contact) */
-        padding: 10px 25px; /* Slightly larger button */
-        font-weight: 700;
-        text-decoration: none; 
-    }
-}
-
-
-/* 768px: Standard Mobile/Portrait Tablet */
-@media (max-width: 768px) {
-    /* **HEADER FIX: Ensure logo and button are on one line** */
-    .nav-bar {
-        /* MODIFIED: Center the remaining element (logo) when other elements are hidden */
-        justify-content: center; 
-        flex-direction: row; 
-        align-items: center; 
-        flex-wrap: nowrap; 
-    }
-    
-    .logo-img-wrapper {
-        height: 40px; 
-        order: 1; 
-        margin-bottom: 0;
-        flex-shrink: 1;
-        /* NEW: Center the logo wrapper within the centered nav-bar for safety */
-        margin: 0; 
-    }
-    .logo-text {
-        font-size: 1.3rem;
-        white-space: nowrap; 
-    }
-    
-    .header-functional-group {
-        /* MODIFIED: Ensure it is completely hidden and does not affect spacing */
-        display: none !important; 
-    }
-    
-    /* No menu toggle to worry about */
-    
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-    .hero { padding: 120px 0; }
-    
-    /* Adjusted for stacking three buttons */
-    .hero-ctas {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-    .hero-ctas .btn {
-        margin: 0;
-    }
-
-    .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-    
-    /* Mobile adjustments for the NOW REMOVED floating box */
-    .floating-contact-box {
-        bottom: 15px;
-        left: 15px;
-        padding: 8px 12px;
-        gap: 10px;
-    }
-    .contact-icon-link {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        box-shadow: none; /* Remove shadow on mobile for cleaner look */
-    }
-
-    /* Modal adjustment for smaller screens */
-    .welcome-modal {
-        padding: 20px;
-    }
-    .modal-helpline {
-        font-size: 1rem;
-    }
-    .welcome-modal h3 {
+    .project-header h3 {
         font-size: 1.5rem;
     }
-    
-    /* MEDIA QUERY for Mobile Gallery */
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller columns on mobile */
-        gap: 15px;
+    .project-image-container {
+        text-align: center;
     }
-    .gallery-item img, .gallery-item video { /* ADDED VIDEO TO STYLES */
-        height: 200px; 
+    
+    /* Tables */
+    .material-table {
+        font-size: 0.9rem;
+    }
+    .material-table th, .material-table td {
+        padding: 8px;
+    }
+
+    /* Services Grid */
+    .services-grid {
+        /* Adjust to allow 1 or 2 columns based on device width */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .service-card {
+        padding: 30px;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .gallery-item img, .gallery-item video {
+        height: 250px; /* Slightly smaller fixed height for video/image */
     }
     .gallery-controls {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 5px;
     }
     .gallery-btn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-        margin: 2px;
+        flex: 1 1 45%; /* Two buttons per row */
     }
+
+
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem !important;
+    }
+    
+    /* Donate */
+    .donation-options {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .option-box {
+        width: 90%;
+        max-width: 350px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+    
+    /* QR Code */
+    .qr-wrapper img {
+        max-width: 150px;
+    }
+    
+    /* Contact */
+    .map-placeholder {
+        min-height: 300px; /* Reduced map height */
+        order: 1; /* Move map to the bottom of the grid */
+    }
+    .contact-details {
+        order: 2; /* Move details to the top */
+    }
+    .contact-details h2 {
+        text-align: left;
+    }
+    
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-links {
+        margin: 20px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .footer-links a {
+        margin: 0;
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0 10px;
+        line-height: 1;
+    }
+    .footer-links a:last-child {
+        border-right: none;
+    }
+    .social-icons {
+        margin-top: 10px;
+    }
+    .social-icons a {
+        margin: 0 10px;
+    }
+    
+    /* Floating Elements on Mobile */
+    /* Contact Box (Social/Call) - Positioned LEFT */
+    .floating-contact-box {
+        bottom: 20px;
+        left: 20px;
+        right: auto; 
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+    .contact-icon-link {
+        width: 40px; 
+        height: 40px;
+        font-size: 20px;
+    }
+
+    /* REMOVED .floating-donate-cta from mobile positioning */
 }
-
-
-/* 576px: Very Small Mobile */
-@media (max-width: 576px) {
-    /* The links are now visible due to the 768px change above */
-
-    .option-box { 
-        width: 100%; 
-        text-align: center; 
-    }
-    .donation-options { 
-        flex-direction: column; 
-        gap: 15px; 
-    }
-    .language-selector {
-        margin-bottom: 0; /* Remove old margin */
-    }
-}
+/* END OF MEDIA QUERY */
         </style>
     </head>
 <body data-lang="en">
@@ -1413,16 +1357,13 @@ h2 {
                 <a href="#founder" data-key="nav_founder">Founder</a> 
                 <a href="#join" data-key="nav_join">Join Us</a>
                 <a href="#contact" data-key="nav_contact">Contact</a>
-                <a href="#donate" class="btn btn-primary" data-key="nav_donate_desktop" aria-label="Donate Now to Manav Seva Ashram">
-                    <i class="fas fa-heart" aria-hidden="true"></i> Donate</a>
-            </nav>
+                </nav>
             
-           <p> <div class="header-functional-group">
-                <a href="#donate" class="btn btn-primary" aria-label="Donate Now to Manav Seva Ashram">
-                    <i class="ffas fa-heart" aria-hidden="true"></i> Donate
-                </a>
+            <div class="header-functional-group">
+                <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            </p>
         </div>
     </header>
     <section id="home" class="hero" role="region" aria-labelledby="hero_title">
@@ -1751,7 +1692,7 @@ h2 {
             <div class="map-placeholder">
                 <h3 data-key="contact_map_title" style="position: absolute; color: #333; padding: 15px; background: rgba(255,255,255,0.8); border-radius: 8px; z-index: 10;">Our Location</h3>
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1825.266205423871!2d72.9366666!3d24.4752778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395359b3f3e1b345%3A0x8a99b4d8d1e18d6a!2sManav%20Seva%20Ashram%20Swaroopganj!5e0!3m2!1sen!2sin!4v1703648000000!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.559082344692!2d72.91220287520457!3d24.638877178074583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395d3291493cd60b%3A0x655df5781c153e7d!2sJWQ8%2B94W%2C%20NH%2027%2C%20Swaroopganj%2C%20Rajasthan%20307023!5e0!3m2!1sen!2sin!4v1765624125048!5m2!1sen!2sin"
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade"
@@ -1788,7 +1729,7 @@ h2 {
                 </a>
                 <a href="https://www.facebook.com/ManavSevaAshram" target="_blank" aria-label="Facebook">
                     <i class="fab fa-facebook-f"></i>
-                </a
+                </a>
                 <a href="https://www.twitter.com/ManavSevaAshram" target="_blank" aria-label="Twitter">
                     <i class="fab fa-twitter"></i>
                 </a>
@@ -1838,19 +1779,12 @@ h2 {
             <i class="fas fa-phone"></i>
         </a>
     </div>
-    
+
     <script defer> 
         // --- Global Variables ---
         let slideIndex = 0;
         const slides = document.querySelectorAll('.hero-slide');
-        const mainFooter = document.querySelector('.main-footer');
         
-        // --- Translation Data (Empty/Removed) ---
-        const translations = {};
-
-        // Original English Text Storage for easy switching back
-        const originalTexts = {};
-
         // --- Core Functions ---
 
         // Slideshow Logic
@@ -1862,22 +1796,6 @@ h2 {
             setTimeout(showSlides, 5000); // Change image every 5 seconds
         }
 
-        // Translation Logic - Simplified to just handle English defaults
-        function storeOriginalTexts() {
-            const elements = document.querySelectorAll('[data-key]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-key');
-                originalTexts[key] = element.innerHTML.trim();
-            });
-        }
-        
-        function updateContent(lang) {
-            // Since all translations are removed, this is a no-op for content,
-            // but maintains the structure in case keys are later used dynamically.
-            const body = document.body;
-            body.setAttribute('data-lang', 'en'); 
-        }
-        
         // --- Dynamic Features ---
 
         // 1. Scroll-Triggered Fade-In Animation (Intersection Observer)
@@ -1936,7 +1854,7 @@ h2 {
                     if (entry.isIntersecting && !hasAnimated) {
                         statNumbers.forEach(stat => {
                             let target = parseInt(stat.getAttribute('data-target'));
-                            animateCounter(stat, 0, target, 2000); // ENHANCEMENT 3: Using cleaned-up animation function
+                            animateCounter(stat, 0, target, 2000); 
                         });
                         hasAnimated = true;
                         observer.unobserve(statSection); 
@@ -1955,7 +1873,7 @@ h2 {
 
             accordionHeaders.forEach(header => {
                 header.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent default link/anchor behavior
+                    e.preventDefault(); 
                     const checkbox = header.previousElementSibling;
                     const isChecked = checkbox.checked;
 
@@ -1963,42 +1881,20 @@ h2 {
                     document.querySelectorAll('.accordion-toggle').forEach(toggle => {
                         if (toggle !== checkbox && toggle.checked) {
                             toggle.checked = false;
-                            document.querySelector(`[aria-controls="${toggle.id}-content"]`).setAttribute('aria-expanded', 'false'); // A11y
-                            document.getElementById(`${toggle.id}-content`).setAttribute('aria-hidden', 'true'); // A11y
+                            document.querySelector(`[aria-controls="${toggle.id}-content"]`).setAttribute('aria-expanded', 'false'); 
+                            document.getElementById(`${toggle.id}-content`).setAttribute('aria-hidden', 'true'); 
                         }
                     });
 
                     // Toggle the current one
                     checkbox.checked = !isChecked; 
-                    header.setAttribute('aria-expanded', !isChecked ? 'true' : 'false'); // A11y
-                    document.getElementById(`${checkbox.id}-content`).setAttribute('aria-hidden', isChecked ? 'true' : 'false'); // A11y
+                    header.setAttribute('aria-expanded', !isChecked ? 'true' : 'false'); 
+                    document.getElementById(`${checkbox.id}-content`).setAttribute('aria-hidden', isChecked ? 'true' : 'false'); 
                 });
             });
         }
-
-        // 4. Pseudo-Parallax Footer Effect (Minor cleanup)
-        function initFooterParallax() {
-            if (!mainFooter) return;
-
-            window.addEventListener('scroll', () => {
-                const scrollPosition = window.scrollY;
-                const footerOffsetTop = mainFooter.offsetTop;
-                const windowHeight = window.innerHeight;
-
-                // Use a requestAnimationFrame loop for smoother updates (ENHANCEMENT 3)
-                requestAnimationFrame(() => {
-                    if (scrollPosition + windowHeight > footerOffsetTop) {
-                        const diff = scrollPosition + windowHeight - footerOffsetTop;
-                        // Adjust the multiplier (0.1) to control the movement speed
-                        mainFooter.style.transform = `translateY(-${diff * 0.1}px)`;
-                    } else {
-                        mainFooter.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { passive: true }); // ENHANCEMENT 3: Use passive listener for performance
-        }
         
-        // 5. First Visit Welcome Modal
+        // 4. First Visit Welcome Modal
         function initWelcomeModal() {
             const modalBackdrop = document.getElementById('welcome-modal-backdrop');
             const closeBtn = document.getElementById('modal-close-btn');
@@ -2026,7 +1922,11 @@ h2 {
                 continueBtn.addEventListener('click', closeModal);
                 
                 // Close modal and navigate on donate button click
-                donateBtn.addEventListener('click', closeModal);
+                donateBtn.addEventListener('click', () => {
+                    closeModal();
+                    // Optional: Manually jump to the anchor if navigation doesn't fire fast enough
+                    window.location.href = donateBtn.getAttribute('href'); 
+                });
 
                 // Close when pressing the escape key
                 document.addEventListener('keydown', (e) => {
@@ -2037,7 +1937,7 @@ h2 {
             }
         }
         
-        // 6. Gallery Filter Logic 
+        // 5. Gallery Filter Logic 
         function initGalleryFilters() {
             const filterButtons = document.querySelectorAll('.gallery-btn');
             const galleryItems = document.querySelectorAll('.gallery-item');
@@ -2057,10 +1957,8 @@ h2 {
 
                     const filter = e.currentTarget.getAttribute('data-filter');
                     
-                    // Create a fragment to optimize DOM manipulation (ENHANCEMENT 3)
                     const fragment = document.createDocumentFragment();
-                    const visibleItems = [];
-
+                    
                     galleryItems.forEach(item => {
                         const category = item.getAttribute('data-category');
                         const videoElement = item.querySelector('video');
@@ -2069,8 +1967,7 @@ h2 {
                         if (shouldBeVisible) {
                             item.style.display = 'block';
                             item.classList.add('visible');
-                            visibleItems.push(item);
-                            fragment.appendChild(item); // Add to fragment for re-ordering (optional: not implemented)
+                            fragment.appendChild(item);
                             
                             // Immediately try to play a visible video
                             if (videoElement) {
@@ -2087,7 +1984,7 @@ h2 {
                                 videoElement.pause(); 
                             }
 
-                            // Use transition end listener for graceful hide (ENHANCEMENT 3)
+                            // Use transition end listener for graceful hide
                             item.addEventListener('transitionend', function handler() {
                                 if (!item.classList.contains('visible')) {
                                     item.style.display = 'none'; 
@@ -2097,42 +1994,54 @@ h2 {
                         }
                     });
                     
-                    // Re-append to the gallery to ensure order remains logical (ENHANCEMENT 3)
-                    // This handles cases where items are re-ordered, though the grid layout minimizes need.
-                    // For now, simply forcing a reflow often helps.
+                    // Re-append to the gallery 
                     gallery.appendChild(fragment); 
 
                 });
             });
         }
+
+        // 6. Mobile Menu Toggle Logic
+        function initMobileMenu() {
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const mainNav = document.getElementById('main-nav-links');
+            
+            if (!menuToggleBtn || !mainNav) return;
+
+            menuToggleBtn.addEventListener('click', () => {
+                const isMenuOpen = mainNav.classList.toggle('menu-open');
+                // Change icon based on state
+                menuToggleBtn.querySelector('i').className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
+                menuToggleBtn.setAttribute('aria-expanded', isMenuOpen);
+            });
+            
+            // Close menu when a navigation link is clicked (for mobile usability)
+            mainNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('menu-open');
+                    menuToggleBtn.querySelector('i').className = 'fas fa-bars';
+                    menuToggleBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
         
-        // 7. Mobile Navigation Toggle Logic (REMOVED)
-        // Since the hamburger button is removed, this function is no longer needed/called.
-
-
         // --- Initialization on Load ---
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Store the original English texts first
-            storeOriginalTexts();
             
-            // 2. Initialize Language Switch (Simplified)
-            updateContent('en'); 
-            
-            // 3. Start Slideshow
+            // 1. Start Slideshow
             showSlides();
 
-            // 4. Initialize New Dynamic Features
+            // 2. Initialize Dynamic Features
             initScrollAnimation();
             initStatCounters();
             initAccordion();
-            initFooterParallax(); 
             initGalleryFilters(); 
-            // initMobileNav(); // Removed as per user request
+            initMobileMenu(); // Initialize Mobile Menu
             
-            // 5. Initialize Welcome Modal
+            // 3. Initialize Welcome Modal
             initWelcomeModal();
 
-            // FIX: Handle the year for the footer copyright dynamically
+            // 4. Handle the year for the footer copyright dynamically
             document.querySelector('[data-key="footer_copyright_year"]').textContent = new Date().getFullYear();
         });
     </script>
