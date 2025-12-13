@@ -1087,13 +1087,48 @@ h2 {
     /* HEADER & NAV (Mobile Menu Setup) */
     .main-header {
         padding: 15px 0;
+        position: relative; /* Essential for absolute positioning of menu-toggle */
+    }
+
+    /* Container setup to allow absolute positioning */
+    .nav-bar {
+        position: relative;
+        display: flex;
+        /* Aligns items (logo wrapper and functional group) along the center */
+        justify-content: center; 
+        align-items: center;
+        flex-wrap: nowrap; /* Prevent wrapping onto multiple lines */
+    }
+
+    /* 1 & 2: Center the Logo & Name and prevent 3-line break */
+    .logo-img-wrapper {
+        /* Centering is handled by parent .nav-bar justify-content: center; */
+        margin: 0;
+        height: 40px; /* Reduced height */
+    }
+
+    .logo-image {
+        height: 100%;
+        width: auto;
+    }
+
+    .logo-text {
+        font-size: 1.3rem; /* Reduced text size */
+        margin-left: 8px; /* Reduced spacing */
     }
     
-    /* Make the functional group visible (Menu Toggle only) */
+    /* 3: Position Menu Toggle absolutely (or keep it in the functional group) */
     .header-functional-group {
         display: flex;
         align-items: center;
         gap: 15px;
+        /* Move the functional group (which contains the menu toggle) to the right */
+        position: absolute;
+        right: 0; 
+        /* The right edge of the container will be the end of the menu toggle */
+        padding-right: 15px; /* Add some padding from the screen edge */
+        height: 100%;
+        top: 0;
     }
     
     /* HIDE Donate button that was in the functional group */
@@ -1108,7 +1143,7 @@ h2 {
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 80px; /* Height of the header */
+        top: 70px; /* Adjusted based on new logo height/padding */
         left: 0;
         background-color: var(--color-background-light-active);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
