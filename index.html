@@ -1203,9 +1203,8 @@ h2 {
     
     /* Functional Group (The Donate Button) adjustment for small screen display */
     .header-functional-group {
-        display: block; /* Ensure the single Donate button is visible */
-        margin-left: auto; /* Push it to the right */
-        order: 2; /* Ensure it is on the right of the logo */
+        /* *** MODIFIED: Ensure it is completely hidden and doesn't take space *** */
+        display: none !important; 
     }
     
     .logo-text {
@@ -1289,11 +1288,11 @@ h2 {
 @media (max-width: 768px) {
     /* **HEADER FIX: Ensure logo and button are on one line** */
     .nav-bar {
-        /* Ensure single-row structure */
+        /* MODIFIED: Center the remaining element (logo) when other elements are hidden */
+        justify-content: center; 
         flex-direction: row; 
         align-items: center; 
         flex-wrap: nowrap; 
-        justify-content: space-between;
     }
     
     .logo-img-wrapper {
@@ -1301,6 +1300,8 @@ h2 {
         order: 1; 
         margin-bottom: 0;
         flex-shrink: 1;
+        /* NEW: Center the logo wrapper within the centered nav-bar for safety */
+        margin: 0; 
     }
     .logo-text {
         font-size: 1.3rem;
@@ -1308,9 +1309,8 @@ h2 {
     }
     
     .header-functional-group {
-        order: 2; /* Keep functional group next (right) */
-        margin-left: auto; /* Push group to the right */
-        flex-shrink: 0;
+        /* MODIFIED: Ensure it is completely hidden and does not affect spacing */
+        display: none !important; 
     }
     
     /* No menu toggle to worry about */
@@ -1823,6 +1823,20 @@ h2 {
                 <button class="btn btn-secondary" id="modal-continue-btn" data-key="modal_btn_continue">Continue to Website</button>
             </div>
         </div>
+    </div>
+    
+    <div class="floating-contact-box" role="complementary" aria-label="Quick Contact Links">
+        <a href="https://wa.me/919602863972" target="_blank" class="contact-icon-link icon-whatsapp" aria-label="WhatsApp Manav Seva Ashram">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        
+        <a href="https://www.instagram.com/manav_seva_ashram?igsh=dTJtN3lucXM2MnZu" target="_blank" class="contact-icon-link icon-instagram" aria-label="Instagram Manav Seva Ashram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        
+        <a href="tel:+919602863972" class="contact-icon-link icon-call" aria-label="Call Manav Seva Ashram Helpline">
+            <i class="fas fa-phone"></i>
+        </a>
     </div>
     
     <script defer> 
